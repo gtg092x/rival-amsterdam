@@ -1,0 +1,54 @@
+:root {
+    --font-size-h1: 35px;
+    -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Poppint%20Font/Poppins-Regular%20SDF.asset?fileID=11400000&guid=8d9ce36a9955349a28e6c2c278be403e&type=2#Poppins-Regular SDF');
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+
+.button-forward {
+    -unity-text-align: middle-center;
+    background-image: url('project://database/Assets/Rival/Art/Vectors/ButtonBgDrop.svg?fileID=7388822144124034973&guid=e73257c918f4a430c983ee0e1cf90f56&type=3#ButtonBgDrop');
+    -unity-background-scale-mode: scale-to-fit;
+    color: rgb(0, 0, 0);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    width: 128px;
+    height: 64px;
+    flex-shrink: 0;
+    -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Poppint%20Font/Poppins-Regular%20SDF.asset?fileID=11400000&guid=8d9ce36a9955349a28e6c2c278be403e&type=2#Poppins-Regular SDF');
+}
+
+.strong {
+    -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Poppint%20Font/Poppins-Bold%20SDF.asset?fileID=11400000&guid=b69add60be911445c899cd3577547d15&type=2#Poppins-Bold SDF');
+}
+
+.button-rival {
+    background-image: url('project://database/Assets/Rival/Art/Textures/UI/RivalStyledButton.png?fileID=2800000&guid=839b5302ada0d44fa88c26fc4c64b8be&type=3#RivalStyledButton');
+    width: 295px;
+    height: 89px;
+    -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Tempo%20SDF.asset?fileID=11400000&guid=ce847bef19f83452b88b8b35aed5c022&type=2#Tempo SDF');
+    font-size: 28px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-text-align: middle-center;
+}
+
+.button-text {
+    -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Tempo%20SDF.asset?fileID=11400000&guid=ce847bef19f83452b88b8b35aed5c022&type=2#Tempo SDF');
+}

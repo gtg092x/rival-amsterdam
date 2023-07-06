@@ -1,0 +1,12 @@
+VisualElement {
+    transition-duration: 20s;
+    transition-timing-function: ease-in-out;
+}
+
+.transform-style-left {
+    translate: -10% -5%;
+}
+
+.transform-stars-down {
+    translate: -2% 10%;
+}

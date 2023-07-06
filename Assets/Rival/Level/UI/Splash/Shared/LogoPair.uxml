@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: center; justify-content: center;">
+        <ui:VisualElement name="Rival" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-shrink: 0; background-image: url(&apos;project://database/Assets/Rival/Art/Textures/UI/RivalWhite%201%20(1).png?fileID=2800000&amp;guid=75469139e12624f6caf76a2c0fa329f9&amp;type=3#RivalWhite 1 (1)&apos;); width: 128px; height: 64px;" />
+        <ui:VisualElement name="Beat" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Art/Textures/UI/Beat.png?fileID=2800000&amp;guid=79544107dcf8b423cad222dbbc712081&amp;type=3#Beat&apos;); width: 128px; height: 32px; flex-shrink: 0;" />
+    </ui:VisualElement>
+</ui:UXML>

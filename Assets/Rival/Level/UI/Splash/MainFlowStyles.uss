@@ -1,0 +1,14 @@
+VisualElement {
+    transition-duration: 2s;
+    transition-timing-function: ease-in-out;
+}
+
+.pop-down-start {
+    opacity: 0;
+    translate: 0 -10%;
+}
+
+.pop-up-start {
+    opacity: 0;
+    translate: 0 10%;
+}
