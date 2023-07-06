@@ -50,7 +50,7 @@ public class MainFlowUI : MonoBehaviour
         _uiAudio.PlayOneShot(_splashSound);
         yield return new WaitForSeconds(1.4f);
         _bottom.RemoveFromClassList(POP_UP_CLASS_NAME);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         OnComplete?.Invoke();
         
     }

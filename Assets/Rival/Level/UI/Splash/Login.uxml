@@ -6,19 +6,17 @@
         <ui:VisualElement name="AuthMain" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: center; -unity-text-align: upper-center; justify-content: center; align-self: auto;">
             <ui:VisualElement name="CenterPart" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-self: center; align-items: center;">
                 <ui:VisualElement name="LoginCTA" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); align-items: center;">
-                    <ui:Label tabindex="-1" text="Already have an account?" display-tooltip-when-elided="true" style="-unity-font-style: normal; -unity-text-align: upper-center; -unity-font-definition: url(&apos;project://database/Assets/Rival/Art/Fonts/Poppint%20Font/Poppins-Bold%20SDF.asset?fileID=11400000&amp;guid=b69add60be911445c899cd3577547d15&amp;type=2#Poppins-Bold SDF&apos;); flex-shrink: 0;" />
-                    <ui:Label tabindex="-1" text="Welcome Back!" display-tooltip-when-elided="true" style="-unity-font-style: normal; -unity-text-align: upper-center; flex-shrink: 0; font-size: 14px;" />
-                    <ui:Button text="Login" display-tooltip-when-elided="true" name="LoginButton" class="button-forward" />
+                    <ui:Label tabindex="-1" text="Please log in to continue" display-tooltip-when-elided="true" style="-unity-font-style: normal; -unity-text-align: upper-center; flex-shrink: 0; font-size: 14px;" />
+                    <ui:TextField picking-mode="Ignore" name="TextField" label="Username" class="rival-text-box" style="padding-left: 32px; padding-right: 32px; padding-top: 36px; padding-bottom: 24px; -unity-text-align: middle-left; margin-right: 4px; width: 192px; height: 64px;" />
+                    <ui:TextField picking-mode="Ignore" name="Password" label="Password&#x9;" class="rival-text-box" style="padding-left: 32px; padding-right: 32px; padding-top: 36px; padding-bottom: 24px; -unity-text-align: middle-left; margin-right: 4px; width: 192px; height: 64px;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="SignUpCTA" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); margin-top: 16px;">
-                    <ui:Label tabindex="-1" text="New to Rival Beat?" display-tooltip-when-elided="true" class="strong" />
-                    <ui:Label tabindex="-1" text="Let&apos;s Jump Right In!" display-tooltip-when-elided="true" style="font-size: 14px;" />
-                    <ui:Button text="Let&apos;s Go!" display-tooltip-when-elided="true" name="SignUpButton" class="button-rival" />
+                    <ui:Label tabindex="-1" text="Trouble logging in?" display-tooltip-when-elided="true" style="font-size: 14px;" />
+                    <ui:Button text="Login" display-tooltip-when-elided="true" name="LoginButton" class="button-forward-dark" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="Tos" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between; align-items: auto; align-self: stretch;">
-                <ui:Button text="terms &gt;" display-tooltip-when-elided="true" name="TermsButton" class="button-text" />
-                <ui:Button text="privacy policy &gt;" display-tooltip-when-elided="true" name="PrivacyButton" class="button-text" />
+            <ui:VisualElement name="BottomLinks" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: center; align-items: auto; align-self: stretch;">
+                <ui:Button text="create account &gt;" display-tooltip-when-elided="true" name="CreateAccount" class="button-text" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

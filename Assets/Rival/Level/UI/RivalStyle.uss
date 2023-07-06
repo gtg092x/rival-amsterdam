@@ -52,3 +52,53 @@
 .button-text {
     -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Tempo%20SDF.asset?fileID=11400000&guid=ce847bef19f83452b88b8b35aed5c022&type=2#Tempo SDF');
 }
+
+.transition-push-exit {
+    transition-property: translate;
+    transition-duration: 2s;
+    transition-timing-function: ease-in;
+    translate: -100% 0;
+}
+
+.transition-push-enter-start {
+    transition-duration: 2s;
+    transition-property: translate;
+    transition-timing-function: ease-out;
+    translate: 100% 0;
+}
+
+.button-forward-dark {
+    -unity-text-align: middle-center;
+    background-image: url('project://database/Assets/Rival/Art/Textures/UI/button-forward-dark.png?fileID=2800000&guid=eb103ef46280143cdb1c3f2b87d8ae7d&type=3#button-forward-dark');
+    -unity-background-scale-mode: stretch-to-fill;
+    color: rgb(255, 255, 255);
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    width: 128px;
+    height: 72px;
+    flex-shrink: 0;
+    -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Poppint%20Font/Poppins-Regular%20SDF.asset?fileID=11400000&guid=8d9ce36a9955349a28e6c2c278be403e&type=2#Poppins-Regular SDF');
+    font-size: 14px;
+}
+
+.rival-text-box {
+    white-space: nowrap;
+    background-color: rgba(0, 0, 0, 0);
+    min-width: 192px;
+    background-image: url('project://database/Assets/Rival/Art/Textures/UI/rival-input-box.png?fileID=2800000&guid=396d6aa4c0be04457b29403e393e87bf&type=3#rival-input-box');
+    color: rgb(77, 77, 77);
+    text-overflow: clip;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 36px;
+    padding-bottom: 24px;
+    margin-right: 4px;
+    -unity-background-scale-mode: scale-and-crop;
+}

@@ -241,6 +241,232 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &47206633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 47206634}
+  - component: {fileID: 47206637}
+  - component: {fileID: 47206636}
+  - component: {fileID: 47206635}
+  m_Layer: 5
+  m_Name: Welcome
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &47206634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47206633}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 829318703}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &47206635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47206633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2998d0758b6d406caa2d7e12cd33b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _exitClassName: transition-push-exit
+  _enterClassName: transition-push-enter-start
+  _renderPanelSettings: {fileID: 11400000, guid: 5d3216f7375ad4a91a364f19a13db2f2,
+    type: 2}
+  _exitPanelSettings: {fileID: 11400000, guid: 1db1f8fcb6fd7477f821020bd857b490, type: 2}
+  _uiDocument: {fileID: 47206637}
+--- !u!114 &47206636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47206633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d6703f644ec4f3daf1d597f8903df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetRoute: 2
+  _router: {fileID: 829318706}
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 47206635}
+        m_TargetAssemblyTypeName: UIRouteTranslater, Assembly-CSharp
+        m_MethodName: Enter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  OnExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 47206635}
+        m_TargetAssemblyTypeName: UIRouteTranslater, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+--- !u!114 &47206637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 47206633}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 5d3216f7375ad4a91a364f19a13db2f2, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: c7cdf06a3a9164020a828603e23c5f26,
+    type: 3}
+  m_SortingOrder: 0
+--- !u!1 &89720752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 89720753}
+  - component: {fileID: 89720756}
+  - component: {fileID: 89720755}
+  - component: {fileID: 89720754}
+  m_Layer: 5
+  m_Name: Login
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &89720753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89720752}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 829318703}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &89720754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89720752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2998d0758b6d406caa2d7e12cd33b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _exitClassName: transition-push-exit
+  _enterClassName: transition-push-enter-start
+  _renderPanelSettings: {fileID: 11400000, guid: 5d3216f7375ad4a91a364f19a13db2f2,
+    type: 2}
+  _exitPanelSettings: {fileID: 11400000, guid: 1db1f8fcb6fd7477f821020bd857b490, type: 2}
+  _uiDocument: {fileID: 89720756}
+--- !u!114 &89720755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89720752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d6703f644ec4f3daf1d597f8903df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetRoute: 4
+  _router: {fileID: 829318706}
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 89720754}
+        m_TargetAssemblyTypeName: UIRouteTranslater, Assembly-CSharp
+        m_MethodName: Enter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  OnExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 89720754}
+        m_TargetAssemblyTypeName: UIRouteTranslater, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+--- !u!114 &89720756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89720752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 5d3216f7375ad4a91a364f19a13db2f2, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: d2e142e38e5ab49e4a8bb7b0da948c29,
+    type: 3}
+  m_SortingOrder: 0
 --- !u!1 &491478602
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +478,8 @@ GameObject:
   - component: {fileID: 491478604}
   - component: {fileID: 491478603}
   - component: {fileID: 491478605}
+  - component: {fileID: 491478606}
+  - component: {fileID: 491478607}
   m_Layer: 5
   m_Name: SplashLogo
   m_TagString: Untagged
@@ -266,7 +494,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491478602}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
@@ -308,7 +536,92 @@ MonoBehaviour:
   _splashSound: {fileID: 8300000, guid: a3d30270d6769449ea8413a365a504d6, type: 3}
   OnComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 829318705}
+        m_TargetAssemblyTypeName: UISplashAudioManager, Assembly-CSharp
+        m_MethodName: PlayMenuMusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 829318706}
+        m_TargetAssemblyTypeName: UISplashRouter, Assembly-CSharp
+        m_MethodName: NavigateTo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: WELCOME
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &491478606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491478602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d6703f644ec4f3daf1d597f8903df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetRoute: 1
+  _router: {fileID: 829318706}
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 491478607}
+        m_TargetAssemblyTypeName: UIRouteTranslater, Assembly-CSharp
+        m_MethodName: Enter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  OnExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 491478607}
+        m_TargetAssemblyTypeName: UIRouteTranslater, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+--- !u!114 &491478607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491478602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2998d0758b6d406caa2d7e12cd33b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _exitClassName: transition-push-exit
+  _enterClassName: transition-push-enter-start
+  _renderPanelSettings: {fileID: 0}
+  _exitPanelSettings: {fileID: 0}
+  _uiDocument: {fileID: 491478603}
 --- !u!1 &829318702
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +654,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 491478604}
+  - {fileID: 47206634}
+  - {fileID: 89720753}
   - {fileID: 1662928072}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -453,6 +768,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf57e89eeea964eabad41b1d8829acb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _menuMusic: {fileID: 8300000, guid: 74d54c0d303b94186ba9d2294585259a, type: 3}
+  _menuSoure: {fileID: 829318704}
 --- !u!114 &829318706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,6 +782,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af3a185110dd428abb9b46446cea24e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentRouteValue: 4
+  OnRouteChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &942724455
 GameObject:
   m_ObjectHideFlags: 0
