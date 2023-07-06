@@ -4,5 +4,5 @@
         <ui:VisualElement name="RivalMarquee" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Art/Textures/UI/RivalWhite%201%20(1).png?fileID=2800000&amp;guid=75469139e12624f6caf76a2c0fa329f9&amp;type=3#RivalWhite 1 (1)&apos;); -unity-background-scale-mode: scale-to-fit; flex-shrink: 0; justify-content: flex-start; width: 256px; height: 128px; align-self: center; -unity-slice-left: 5; -unity-slice-top: 5; -unity-slice-right: 5; -unity-slice-bottom: 5;" />
         <ui:VisualElement name="BeatMarquee" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Art/Textures/UI/Beat.png?fileID=2800000&amp;guid=79544107dcf8b423cad222dbbc712081&amp;type=3#Beat&apos;); -unity-background-scale-mode: scale-to-fit; flex-shrink: 0; width: 256px; height: 64px; align-items: center; align-self: center;" />
     </ui:VisualElement>
-    <ui:VisualElement name="CanvasDrawer" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 1000px; height: 1000px;" />
+    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 800px;" />
 </ui:UXML>

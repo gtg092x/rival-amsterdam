@@ -1,0 +1,17 @@
+:root {
+    --loop-overlay-color: rgba(0,0,0,0.40);
+}
+
+.view-corner {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+}
+
+#TopBar, #BottomBar {
+    background-color: var(--loop-overlay-color);
+}
+
+#Mid {
+    border-color: var(--loop-overlay-color);
+}

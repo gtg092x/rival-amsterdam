@@ -7,8 +7,8 @@
             <ui:VisualElement name="CenterPart" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-self: center; align-items: center;">
                 <ui:VisualElement name="LoginCTA" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); align-items: center;">
                     <ui:Label tabindex="-1" text="Please log in to continue" display-tooltip-when-elided="true" style="-unity-font-style: normal; -unity-text-align: upper-center; flex-shrink: 0; font-size: 14px;" />
-                    <ui:TextField picking-mode="Ignore" name="TextField" label="Username" class="rival-text-box" style="padding-left: 32px; padding-right: 32px; padding-top: 36px; padding-bottom: 24px; -unity-text-align: middle-left; margin-right: 4px; width: 192px; height: 64px;" />
-                    <ui:TextField picking-mode="Ignore" name="Password" label="Password&#x9;" class="rival-text-box" style="padding-left: 32px; padding-right: 32px; padding-top: 36px; padding-bottom: 24px; -unity-text-align: middle-left; margin-right: 4px; width: 192px; height: 64px;" />
+                    <ui:TextField picking-mode="Ignore" name="TextField" placeholder-text="Username" hide-placeholder-on-focus="false" class="rival-text-box" style="padding-left: 32px; padding-right: 32px; padding-top: 36px; padding-bottom: 24px; -unity-text-align: middle-left; margin-right: 4px; width: 192px; height: 64px;" />
+                    <ui:TextField picking-mode="Ignore" name="Password" label="&#x9;" placeholder-text="Password" password="true" class="rival-text-box" style="padding-left: 32px; padding-right: 32px; padding-top: 36px; padding-bottom: 24px; -unity-text-align: middle-left; margin-right: 4px; width: 192px; height: 64px;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="SignUpCTA" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); margin-top: 16px;">
                     <ui:Label tabindex="-1" text="Trouble logging in?" display-tooltip-when-elided="true" style="font-size: 14px;" />
