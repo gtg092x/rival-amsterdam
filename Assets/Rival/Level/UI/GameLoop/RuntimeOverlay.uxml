@@ -1,7 +1,20 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Rival/Level/UI/GameLoop/RuntimeHUD.uss?fileID=7433441132597879392&amp;guid=52c729ebd8fc047fc80580758be8b6b8&amp;type=3#RuntimeHUD" />
-    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-        <ui:VisualElement name="TopBar" style="flex-grow: 1;" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: 750px; max-height: 100%;">
+        <ui:VisualElement name="TopBar" style="flex-grow: 0; padding-left: 16px; padding-right: 16px; padding-top: 16px; padding-bottom: 16px; flex-direction: row;">
+            <ui:VisualElement name="Character" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 90px; align-items: center;">
+                <ui:VisualElement name="CharacterPreview" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Level/Renders/ZooRender1.renderTexture?fileID=8400000&amp;guid=ba3d5b6b7479045e6a9b038f5772b33c&amp;type=2#ZooRender1&apos;); width: 80px; height: 80px; flex-shrink: 0;" />
+                <ui:VisualElement name="HealthBar" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Art/Vectors/HealthBar.svg?fileID=7388822144124034973&amp;guid=46483847efa29439ba4c64ee7312e890&amp;type=3#HealthBar&apos;); width: 70px; height: 20px; -unity-background-scale-mode: scale-to-fit;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Character" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 90px; align-items: center;">
+                <ui:VisualElement name="CharacterPreview" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Level/Renders/ZooRender2.renderTexture?fileID=8400000&amp;guid=15813d0fa66484211b86dd5ad71cee10&amp;type=2#ZooRender2&apos;); width: 80px; height: 80px; flex-shrink: 0;" />
+                <ui:VisualElement name="HealthBar" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Art/Vectors/HealthBar.svg?fileID=7388822144124034973&amp;guid=46483847efa29439ba4c64ee7312e890&amp;type=3#HealthBar&apos;); width: 70px; height: 20px; -unity-background-scale-mode: scale-to-fit;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Character" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 90px; align-items: center;">
+                <ui:VisualElement name="CharacterPreview" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Level/Renders/ZooRender3.renderTexture?fileID=8400000&amp;guid=ed53d5925b7d8447893400e8ab7af7cc&amp;type=2#ZooRender3&apos;); width: 80px; height: 80px; flex-shrink: 0;" />
+                <ui:VisualElement name="HealthBar" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Art/Vectors/HealthBar.svg?fileID=7388822144124034973&amp;guid=46483847efa29439ba4c64ee7312e890&amp;type=3#HealthBar&apos;); width: 70px; height: 20px; -unity-background-scale-mode: scale-to-fit;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
         <ui:VisualElement name="Mid" style="flex-grow: 1; -unity-slice-left: 2; -unity-slice-top: 2; -unity-slice-right: 2; -unity-slice-bottom: 2; -unity-slice-scale: 0; border-left-width: 50px; border-right-width: 50px; border-top-width: 12px; border-bottom-width: 12px;">
             <ui:VisualElement name="Top" style="background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between; flex-grow: 1;">
                 <ui:VisualElement name="TL" class="view-corner" style="background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Art/Vectors/TLCorner.svg?fileID=7388822144124034973&amp;guid=dce6ece85dc6c49f48e5819082529993&amp;type=3#TLCorner&apos;); left: -12px; top: -12px;" />
