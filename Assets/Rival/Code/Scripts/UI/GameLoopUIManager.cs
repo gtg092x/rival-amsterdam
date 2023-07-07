@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +9,61 @@ using UnityEngine.UIElements;
 public class GameLoopUIManager : MonoBehaviour
 {
     public UIDocument MainUI;
+
+    private VisualElement rootElement;
+    private VisualElement VolumeGate => rootElement.Q<VisualElement>("VolumeGate");
+    private PlayerReadyElement PlayerCountdown => rootElement.Q<PlayerReadyElement>("PlayerReadyModal");
+    private VisualElement PreviewGate => rootElement.Q<VisualElement>("PreviewGate");
+    private VisualElement PoseGate => rootElement.Q<VisualElement>("PoseGate");
+    
+    [SerializeField]
+    private GameManager _gameManager;
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        var ready = MainUI.rootVisualElement.Q<PlayerReadyElement>();
+        HideAllSections();
+        yield break;
+    }
+
+    private void Awake()
+    {
+        rootElement = MainUI.rootVisualElement;
+        BindToControls();
+        BindToStateChange();
+    }
+
+    private void BindToStateChange()
+    {
+        _gameManager.OnGameStateExit.AddListener(HandleStateExit);
+        _gameManager.OnGameStateEnter.AddListener(HandleStateEnter);
+    }
+
+    private void OnDestroy()
+    {
+        UnbindToControls();
+    }
+
+    private void UnbindToControls()
+    {
+        rootElement.Q<Button>("VolumeContinue").clicked -= _gameManager.NextState;
+        rootElement.Q<Button>("PreviewContinue").clicked -= _gameManager.NextState;
+        rootElement.Q<Button>("PoseContinue").clicked -= _gameManager.NextState;
+    }
+
+    private void BindToControls()
+    {
+        rootElement.Q<Button>("VolumeContinue").clicked += _gameManager.NextState;
+        rootElement.Q<Button>("PreviewContinue").clicked += _gameManager.NextState;
+        rootElement.Q<Button>("PoseContinue").clicked += _gameManager.NextState;
+    }
+
+
+    IEnumerator StartHandleCountdown()
+    {
+        var ready = rootElement.Q<PlayerReadyElement>();
         ready.Init(3);
         yield return new WaitForSeconds(1f);
         ready.PlayerName = "Matt";
-        yield return ready.PerformCountdown();
-        Debug.Log("GO");
-        ready.Init(5);
         yield return ready.PerformCountdown();
     }
 
@@ -28,6 +74,14 @@ public class GameLoopUIManager : MonoBehaviour
         {
             AddPlayerToTopBar(player);
         }
+
+        SetCountdownAvatars(playerSessionModel);
+    }
+
+    private void SetCountdownAvatars(PlayerSessionModel playerSessionModel)
+    {
+        PlayerCountdown.EnemyAvatar = _zooManager.GetRender(playerSessionModel.BossAvatar, true);
+        PlayerCountdown.PlayerAvatar = _zooManager.GetRender(playerSessionModel.GetPlayers().First().Avatar);
     }
 
     [SerializeField]
@@ -54,14 +108,88 @@ public class GameLoopUIManager : MonoBehaviour
             topBar.Remove(child);
         }
     }
-
-    public void HandleStateExit(GameManager.RivalGameState state)
-    {
-        
-    }
     
-    public void HandleStateEnter(GameManager.RivalGameState state)
+    private void HideAllSections()
     {
-        
+        VolumeGate.style.display = DisplayStyle.None;
+        PreviewGate.style.display = DisplayStyle.None;
+        PoseGate.style.display = DisplayStyle.None;
+        PlayerCountdown.style.display = DisplayStyle.None;
     }
+
+    void HandleStateExit(GameManager.RivalGameState state)
+    {
+        switch (state)
+        {
+            case GameManager.RivalGameState.NONE:
+                break;
+            case GameManager.RivalGameState.VOLUME_UP:
+                VolumeGate.style.display = DisplayStyle.None;
+                break;
+            case GameManager.RivalGameState.MOVE_PREVIEW:
+                PreviewGate.style.display = DisplayStyle.None;
+                break;
+            case GameManager.RivalGameState.STEP_BACK:
+                PoseGate.style.display = DisplayStyle.None;
+                break;
+            case GameManager.RivalGameState.GAMEPLAY_COUNTDOWN:
+                PlayerCountdown.style.display = DisplayStyle.None;
+                break;
+            case GameManager.RivalGameState.GAMEPLAY_PLAY:
+                break;
+            case GameManager.RivalGameState.GAMEPLAY_DAMAGE_SUMMARY:
+                break;
+            case GameManager.RivalGameState.ENDGAME:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(state), state, null);
+        }
+    }
+
+    private Coroutine currentCountdown;
+    private void StartCountdown()
+    {
+        if (currentCountdown != null)
+        {
+            StopCoroutine(currentCountdown);    
+        }
+        currentCountdown = StartCoroutine(StartHandleCountdown());
+    }
+
+    void HandleStateEnter(GameManager.RivalGameState state)
+    {
+        switch (state)
+        {
+            case GameManager.RivalGameState.NONE:
+                break;
+            case GameManager.RivalGameState.VOLUME_UP:
+                VolumeGate.style.display = DisplayStyle.Flex;
+                break;
+            case GameManager.RivalGameState.MOVE_PREVIEW:
+                PreviewGate.style.display = DisplayStyle.Flex;
+                break;
+            case GameManager.RivalGameState.STEP_BACK:
+                PoseGate.style.display = DisplayStyle.Flex;
+                break;
+            case GameManager.RivalGameState.GAMEPLAY_COUNTDOWN:
+                PlayerCountdown.style.display = DisplayStyle.Flex;
+                StartCountdown();
+                break;
+            case GameManager.RivalGameState.GAMEPLAY_PLAY:
+                break;
+            case GameManager.RivalGameState.GAMEPLAY_DAMAGE_SUMMARY:
+                break;
+            case GameManager.RivalGameState.ENDGAME:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(state), state, null);
+        }    
+    }
+
+    private void OnValidate()
+    {
+        _gameManager ??= FindAnyObjectByType<GameManager>();
+    }
+
+    
 }

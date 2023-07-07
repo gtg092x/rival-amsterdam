@@ -15,7 +15,27 @@
                 <ui:VisualElement name="BR" class="view-corner" style="background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Art/Vectors/BRCorner.svg?fileID=7388822144124034973&amp;guid=11bb51a52ed714f068ad1f4c1c3c60dd&amp;type=3#BRCorner&apos;); right: -12px; bottom: -12px;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="BottomBar" style="flex-grow: 1;" />
+        <ui:VisualElement name="BottomBar" />
     </ui:VisualElement>
-    <PlayerReadyElement playerName="Player 2" name="PlayerReadyModal" playerAvatar="project://database/Assets/Rival/Level/Renders/ZooRender1.renderTexture?fileID=8400000&amp;guid=ba3d5b6b7479045e6a9b038f5772b33c&amp;type=2#ZooRender1" class="modal" />
+    <PlayerReadyElement playerName="Player 2" name="PlayerReadyModal" playerAvatar="project://database/Assets/Rival/Level/Renders/ZooRender1.renderTexture?fileID=8400000&amp;guid=ba3d5b6b7479045e6a9b038f5772b33c&amp;type=2#ZooRender1" class="modal" style="display: none;" />
+    <ui:VisualElement name="VolumeGate" class="modal" style="flex-grow: 0; justify-content: flex-start; align-items: stretch;">
+        <ui:VisualElement class="modal-content" style="background-color: rgba(173, 173, 173, 0.74); padding-top: 16px; padding-bottom: 16px; justify-content: center; align-items: stretch; top: 32px; margin-left: 8px; margin-right: 8px; padding-right: 16px; padding-left: 16px;">
+            <ui:VisualElement name="VolumeIcon" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0; width: 96px; height: 96px; align-self: center; background-image: url(&apos;project://database/Assets/Rival/Art/Textures/UI/Icon/audioIcon.png?fileID=2800000&amp;guid=ffc59fc4ac4e949e1b24421fff1d385e&amp;type=3#audioIcon&apos;); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-left-radius: 64px; border-bottom-left-radius: 64px; border-top-right-radius: 64px; border-bottom-right-radius: 64px;" />
+            <ui:Label tabindex="-1" text="Please make sure your audio volume is up so you can hear the music and cues!" display-tooltip-when-elided="true" style="white-space: normal;" />
+            <ui:Button text="Continue" display-tooltip-when-elided="true" name="VolumeContinue" class="continue-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="PreviewGate" class="modal" style="flex-grow: 0; justify-content: flex-start; align-items: stretch;">
+        <ui:VisualElement class="modal-content" style="background-color: rgba(173, 173, 173, 0.74); padding-top: 16px; padding-bottom: 16px; justify-content: center; align-items: stretch; top: 32px; margin-left: 8px; margin-right: 8px; padding-right: 16px; padding-left: 16px;">
+            <ui:VisualElement name="VolumeIcon" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0; width: 96px; height: 96px; align-self: center; background-image: url(&apos;project://database/Assets/Rival/Art/Textures/UI/Icon/audioIcon.png?fileID=2800000&amp;guid=ffc59fc4ac4e949e1b24421fff1d385e&amp;type=3#audioIcon&apos;); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-left-radius: 64px; border-bottom-left-radius: 64px; border-top-right-radius: 64px; border-bottom-right-radius: 64px;" />
+            <ui:Label tabindex="-1" text="preview" display-tooltip-when-elided="true" style="white-space: normal;" />
+            <ui:Button text="Continue" display-tooltip-when-elided="true" name="PreviewContinue" class="continue-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="PoseGate" class="modal" style="flex-grow: 0; justify-content: flex-start; align-items: stretch; background-color: rgba(0, 0, 0, 0);">
+        <ui:VisualElement class="modal-content" style="background-color: rgba(173, 173, 173, 0); padding-top: 16px; padding-bottom: 16px; justify-content: center; align-items: stretch; top: 32px; margin-left: 8px; margin-right: 8px; padding-right: 16px; padding-left: 16px;">
+            <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Art/Vectors/silhouette.svg?fileID=7388822144124034973&amp;guid=6f06ff629e84c47dd99dcefa0b39e057&amp;type=3#silhouette&apos;); width: 196px; height: 448px; -unity-background-scale-mode: scale-to-fit; align-self: center;" />
+            <ui:Button text="Continue" display-tooltip-when-elided="true" name="PoseContinue" class="continue-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>

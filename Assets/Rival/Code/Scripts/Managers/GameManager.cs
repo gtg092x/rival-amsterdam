@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using MonsterLove.StateMachine;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,18 +21,43 @@ public class GameManager : MonoBehaviour
         ENDGAME,
     }
 
+    public static RivalGameState[] StatesInOrder = new[]
+    {
+        RivalGameState.NONE,
+        RivalGameState.VOLUME_UP,
+        RivalGameState.MOVE_PREVIEW,
+        RivalGameState.STEP_BACK,
+        RivalGameState.GAMEPLAY_COUNTDOWN,
+        RivalGameState.GAMEPLAY_PLAY,
+        RivalGameState.GAMEPLAY_DAMAGE_SUMMARY,
+        RivalGameState.ENDGAME,
+    };
+    
+    public void NextState()
+    {
+        var index = StatesInOrder.Select((_, i) => new { _, i }).First(x => x._ == fsm.State).i;
+        if (index >= StatesInOrder.Length - 1)
+        {
+            return;
+        }
+
+        var nextState = StatesInOrder[index + 1];
+        fsm.ChangeState(nextState);
+    }
+
     private StateMachine<RivalGameState> fsm;
     
     void Awake(){
         fsm = new StateMachine<RivalGameState>(this); 
         fsm.Changed += FsmOnChanged;
         OnGameStateChange.AddListener(BroadcastExitAndEnter);
-        fsm.ChangeState(RivalGameState.VOLUME_UP);
+        fsm.ChangeState(RivalGameState.NONE);
     }
 
     IEnumerator Start()
     {
         yield return new WaitForEndOfFrame();
+        NextState();
     }
     
     [SerializeField]
@@ -83,4 +109,10 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public void RequestState(RivalGameState state)
+    {
+        
+    }
+
 }

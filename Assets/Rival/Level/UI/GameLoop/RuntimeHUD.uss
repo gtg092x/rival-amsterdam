@@ -2,6 +2,7 @@
     --loop-overlay-color: rgba(0, 0, 0, 0.4);
     --overlay-top-height: 150px;
     --overlay-bottom-height: 200px;
+    --overlay-side-width: 50px;
 }
 
 .view-corner {
@@ -56,4 +57,14 @@
 
 .unity-progress-bar__progress {
     background-color: rgb(237, 223, 81);
+}
+
+.modal {
+    background-color: var(--loop-overlay-color);
+    padding-right: var(--overlay-side-width);
+    padding-left: var(--overlay-side-width);
+}
+
+.modal-content {
+    margin-top: var(--overlay-top-height);   
 }

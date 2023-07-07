@@ -37,8 +37,8 @@ public class PlayerHealthElement : VisualElement
         set => _healthBar.value = value;
     }
 
-    private ProgressBar _healthBar;
-    private VisualElement _avatar;
+    private readonly ProgressBar _healthBar;
+    private readonly VisualElement _avatar;
     private VisualElement _container;
     
     public IEnumerator PerformTaunt()

@@ -23,6 +23,8 @@ public class PlayerSessionModel
     {
         _boss = bossAvatar;
     }
+
+    public AvatarObject BossAvatar => _boss; 
     public PlayerSessionModel()
     {
         _players = new PlayerEntry[] { };

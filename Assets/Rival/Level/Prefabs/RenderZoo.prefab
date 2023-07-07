@@ -546,7 +546,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e778ca4f58f24bfea16cf3303f78668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetPrototype: {fileID: 0}
+  _targetPrototype:
+    Game: {fileID: 0}
+    BonePath: 
   _isHeadOn: 0
   _zooBox: {fileID: 7262635623638364863}
   _headOnCam: {fileID: 6844289231598629280}
