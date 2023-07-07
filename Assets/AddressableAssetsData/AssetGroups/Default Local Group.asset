@@ -18,7 +18,17 @@ MonoBehaviour:
   m_GUID: 66ff407f434ab48338e4de30e9201544
   m_SerializeEntries:
   - m_GUID: 25a59f4e9a27a40b9a1f0a2fda559a90
-    m_Address: UI/RuntimePlayerReady.uxml
+    m_Address: UI/Components/RuntimePlayerReady.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f31e0696b887249de93a972056f6152a
+    m_Address: UI/Components/BossHealth.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 332df53ea481e43a287b2ee17a78c3dc
+    m_Address: UI/Components/PlayerHealth.uxml
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

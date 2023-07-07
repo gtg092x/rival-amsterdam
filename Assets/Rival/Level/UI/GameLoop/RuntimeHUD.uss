@@ -53,3 +53,7 @@
 .scale-down-in {
     scale: 1.2 1.2;
 }
+
+.unity-progress-bar__progress {
+    background-color: rgb(237, 223, 81);
+}

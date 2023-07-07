@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Character" style="background-color: rgba(0, 0, 0, 0); width: 90px; align-items: center; flex-shrink: 0; height: 128px; background-image: url(&apos;project://database/Assets/Rival/Level/Renders/ZooRender1.renderTexture?fileID=8400000&amp;guid=ba3d5b6b7479045e6a9b038f5772b33c&amp;type=2#ZooRender1&apos;);">
+        <ui:VisualElement name="CharacterPreview" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Level/Renders/ZooRender1.renderTexture?fileID=8400000&amp;guid=ba3d5b6b7479045e6a9b038f5772b33c&amp;type=2#ZooRender1&apos;); width: 80px; height: 100px; flex-shrink: 0;" />
+        <ui:ProgressBar value="22" name="HealthBar" style="width: 70px; height: 24px;" />
+    </ui:VisualElement>
+</ui:UXML>

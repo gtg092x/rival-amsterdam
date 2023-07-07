@@ -33,6 +33,8 @@ MonoBehaviour:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
     - Cinemachine
+    - MonsterLove.StateMachine.Runtime
+    - MonsterLove.StateMachine.Samples
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

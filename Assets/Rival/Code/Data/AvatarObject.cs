@@ -7,4 +7,5 @@ public class AvatarObject : ScriptableObject
 {
     public GameObject Prefab;
     public string AvatarName;
+    public string BoneFocus = "RigPelvis";
 }

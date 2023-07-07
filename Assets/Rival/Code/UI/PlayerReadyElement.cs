@@ -83,7 +83,7 @@ public class PlayerReadyElement : VisualElement
     
     public PlayerReadyElement()
     {
-        var op = Addressables.LoadAssetAsync<VisualTreeAsset>("UI/RuntimePlayerReady.uxml");
+        var op = Addressables.LoadAssetAsync<VisualTreeAsset>("UI/Components/RuntimePlayerReady.uxml");
         VisualTreeAsset template = op.WaitForCompletion();
         template.CloneTree(this);
 
