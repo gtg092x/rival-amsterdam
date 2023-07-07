@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Rival/Level/UI/RivalStyle.uss?fileID=7433441132597879392&amp;guid=de8beac1265cc4f3eb7349ce56966d3f&amp;type=3#RivalStyle" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); padding-left: 32px; padding-right: 32px; padding-top: 16px; padding-bottom: 16px; justify-content: center; align-self: center; align-items: center;">
+        <ui:VisualElement name="AuthMain" style="flex-grow: 1; background-color: rgba(243, 86, 86, 0.39); align-items: center; -unity-text-align: upper-center; justify-content: center; align-self: auto; border-left-width: 4px; border-right-width: 4px; border-top-width: 4px; border-bottom-width: 4px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-left-color: rgba(0, 0, 0, 0.39); border-right-color: rgba(0, 0, 0, 0.39); border-top-color: rgba(0, 0, 0, 0.39); border-bottom-color: rgba(0, 0, 0, 0.39);">
+            <ui:ProgressBar value="22" title="Progress" name="ProgressBar" style="width: 281px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px;" />
+            <ui:VisualElement name="CenterPart" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; align-self: center; align-items: center;">
+                <ui:VisualElement name="LoginCTA" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); align-items: center;">
+                    <ui:Label tabindex="-1" text="Pyro the Maniac" display-tooltip-when-elided="true" style="-unity-font-style: normal; -unity-text-align: upper-center; -unity-font-definition: url(&apos;project://database/Assets/Rival/Art/Fonts/Tempo%20SDF.asset?fileID=11400000&amp;guid=ce847bef19f83452b88b8b35aed5c022&amp;type=2#Tempo SDF&apos;); flex-shrink: 0; font-size: 30px; color: rgb(255, 255, 255);" />
+                    <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; height: 150px; width: 150px; background-image: url(&apos;project://database/Assets/Rival/Art/Models/Avatars/Fire%20Cute%20Series/Textures/Fire.psd?fileID=2800000&amp;guid=7c655c23a2a60d449ba0f4c1b9b02ea9&amp;type=3#Fire&apos;); -unity-background-scale-mode: scale-to-fit; white-space: normal; transform-origin: center;" />
+                    <ui:Label tabindex="-1" text="My rage is my weapon! I don’t think, I just react.  Think you can beat me and save planet Ember? Good luck...NOT." display-tooltip-when-elided="true" style="-unity-font-style: normal; -unity-text-align: upper-center; flex-shrink: 0; font-size: 14px; white-space: normal; color: rgb(255, 255, 255);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="SignUpCTA" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); margin-top: 16px;">
+                    <ui:Button text="Play" display-tooltip-when-elided="true" name="SignUpButton" class="button-rival" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Tos" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: row; justify-content: space-between; align-items: auto; align-self: stretch;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
