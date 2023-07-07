@@ -3,6 +3,7 @@
     -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Poppint%20Font/Poppins-Regular%20SDF.asset?fileID=11400000&guid=8d9ce36a9955349a28e6c2c278be403e&type=2#Poppins-Regular SDF');
     font-size: 16px;
     color: rgb(255, 255, 255);
+    --modal-bg-color: rgba(5, 3, 12, 0.30);
 }
 
 .button-forward {
@@ -101,4 +102,13 @@
     padding-bottom: 24px;
     margin-right: 4px;
     -unity-background-scale-mode: scale-and-crop;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--modal-bg-color);
 }

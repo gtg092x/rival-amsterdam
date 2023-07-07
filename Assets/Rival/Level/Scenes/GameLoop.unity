@@ -129,6 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 13460876}
+  - component: {fileID: 13460877}
   m_Layer: 6
   m_Name: RenderZoo
   m_TagString: Untagged
@@ -154,6 +155,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &13460877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13460875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae515c0d40f494ce1ab639e74f3acf9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &155928581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2385582137127880254, guid: d38dfa2e0a60344408e5d41e3a34e27f,
@@ -240,6 +253,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &382759290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 382759292}
+  - component: {fileID: 382759291}
+  m_Layer: 0
+  m_Name: GameLoopController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &382759291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382759290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1272f2d89ac5745e687d13fb7e844c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainUI: {fileID: 1035159851}
+--- !u!4 &382759292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382759290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &581324486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1007,7 +1065,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1025342072}
   - component: {fileID: 1025342076}
-  - component: {fileID: 1025342075}
   - component: {fileID: 1025342074}
   - component: {fileID: 1025342073}
   m_Layer: 7
@@ -1110,14 +1167,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &1025342075
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1025342071}
-  m_Enabled: 1
 --- !u!20 &1025342076
 Camera:
   m_ObjectHideFlags: 0
@@ -1890,7 +1939,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2001145104}
   - component: {fileID: 2001145108}
-  - component: {fileID: 2001145107}
   - component: {fileID: 2001145106}
   - component: {fileID: 2001145105}
   m_Layer: 8
@@ -1993,14 +2041,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &2001145107
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2001145103}
-  m_Enabled: 1
 --- !u!20 &2001145108
 Camera:
   m_ObjectHideFlags: 0
@@ -2062,7 +2102,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2089226356}
   - component: {fileID: 2089226359}
-  - component: {fileID: 2089226358}
   - component: {fileID: 2089226357}
   - component: {fileID: 2089226360}
   m_Layer: 6
@@ -2131,14 +2170,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &2089226358
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2089226355}
-  m_Enabled: 1
 --- !u!20 &2089226359
 Camera:
   m_ObjectHideFlags: 0

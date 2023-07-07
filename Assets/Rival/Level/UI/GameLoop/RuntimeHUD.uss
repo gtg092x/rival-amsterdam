@@ -1,5 +1,7 @@
 :root {
-    --loop-overlay-color: rgba(0,0,0,0.40);
+    --loop-overlay-color: rgba(0, 0, 0, 0.4);
+    --overlay-top-height: 150px;
+    --overlay-bottom-height: 200px;
 }
 
 .view-corner {
@@ -8,10 +10,46 @@
     flex-shrink: 0;
 }
 
-#TopBar, #BottomBar {
+#TopBar {
+    height: var(--overlay-top-height);
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.top-bar {
+    height: var(--overlay-top-height);
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+#BottomBar {
+    height: var(--overlay-bottom-height);
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.bottom-bar {
+    height: var(--overlay-bottom-height);
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+#TopBar {
+    background-color: var(--loop-overlay-color);
+}
+
+#BottomBar {
     background-color: var(--loop-overlay-color);
 }
 
 #Mid {
     border-color: var(--loop-overlay-color);
+}
+
+.opacity-in {
+    opacity: 0;
+}
+
+.scale-down-in {
+    scale: 1.2 1.2;
 }
