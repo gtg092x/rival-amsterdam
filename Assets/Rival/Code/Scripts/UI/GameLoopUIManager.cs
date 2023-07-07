@@ -61,9 +61,9 @@ public class GameLoopUIManager : MonoBehaviour
     IEnumerator StartHandleCountdown()
     {
         var ready = rootElement.Q<PlayerReadyElement>();
+        ready.PlayerName = "Player 1";
         ready.Init(3);
         yield return new WaitForSeconds(1f);
-        ready.PlayerName = "Matt";
         yield return ready.PerformCountdown();
     }
 

@@ -25,10 +25,10 @@
             <ui:Button text="Continue" display-tooltip-when-elided="true" name="VolumeContinue" class="continue-button" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="PreviewGate" class="modal" style="flex-grow: 0; justify-content: flex-start; align-items: stretch;">
-        <ui:VisualElement class="modal-content" style="background-color: rgba(173, 173, 173, 0.74); padding-top: 16px; padding-bottom: 16px; justify-content: center; align-items: stretch; top: 32px; margin-left: 8px; margin-right: 8px; padding-right: 16px; padding-left: 16px;">
-            <ui:VisualElement name="VolumeIcon" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0; width: 96px; height: 96px; align-self: center; background-image: url(&apos;project://database/Assets/Rival/Art/Textures/UI/Icon/audioIcon.png?fileID=2800000&amp;guid=ffc59fc4ac4e949e1b24421fff1d385e&amp;type=3#audioIcon&apos;); border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); border-top-left-radius: 64px; border-bottom-left-radius: 64px; border-top-right-radius: 64px; border-bottom-right-radius: 64px;" />
-            <ui:Label tabindex="-1" text="preview" display-tooltip-when-elided="true" style="white-space: normal;" />
+    <ui:VisualElement name="PreviewGate" class="modal" style="flex-grow: 0; justify-content: center; align-items: stretch;">
+        <ui:VisualElement style="padding-top: 16px; padding-bottom: 16px; justify-content: center; align-items: stretch; top: 32px; margin-left: 8px; margin-right: 8px; padding-right: 16px; padding-left: 16px;">
+            <ui:VisualElement name="PreviewPic" style="background-color: rgba(0, 0, 0, 0); flex-shrink: 0; width: 256px; height: 512px; align-self: center; background-image: url(&apos;project://database/Assets/Rival/Art/Textures/UI/PosePreview.png?fileID=2800000&amp;guid=846d61cf6430a4e38aeced217cdc3533&amp;type=3#PosePreview&apos;);" />
+            <ui:Button text="Replay" display-tooltip-when-elided="true" name="PreviewReplay" class="continue-button" style="margin-top: 8px; margin-bottom: 8px;" />
             <ui:Button text="Continue" display-tooltip-when-elided="true" name="PreviewContinue" class="continue-button" />
         </ui:VisualElement>
     </ui:VisualElement>
