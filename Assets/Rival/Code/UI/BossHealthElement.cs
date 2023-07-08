@@ -57,8 +57,8 @@ public class BossHealthElement : VisualElement
         Addressables.Release(op);
     }
 
-    public void Init()
+    public void Init(float health)
     {
-        BossBarProgress = 1f;
+        BossBarProgress = health * 100f;
     }
 }

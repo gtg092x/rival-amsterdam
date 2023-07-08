@@ -207,6 +207,7 @@ MonoBehaviour:
   OnGameStateEnter:
     m_PersistentCalls:
       m_Calls: []
+  WinScene: {fileID: 102900000, guid: 14c090bf3336e4687924ceeec3f02ef1, type: 3}
 --- !u!4 &382759292
 Transform:
   m_ObjectHideFlags: 0
@@ -267,6 +268,30 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   GameModel: {}
+  OnBossDead:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAllDead:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerRez:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerDead:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerFocus:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerBlur:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBossHealthUpdate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &597663595
 Transform:
   m_ObjectHideFlags: 0
@@ -763,6 +788,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c2e8b67e7fad44399ad1322b0142183b, type: 2}
   - {fileID: 11400000, guid: ed63a1ee5d24e4f05ae0920a1e9ea440, type: 2}
   BossAvatar: {fileID: 11400000, guid: 5f6338415902841bea45da74b1f0ddb1, type: 2}
+  GameLevel: {fileID: 11400000, guid: e95009202df6c45bcbc64b9c3ec34a46, type: 2}
 --- !u!4 &1946190015 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 673892755822153821, guid: e9c3729535fdf4097b89b29d9816cba5,

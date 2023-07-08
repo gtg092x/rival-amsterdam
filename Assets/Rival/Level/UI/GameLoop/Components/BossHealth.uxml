@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Rival/Level/UI/GameLoop/RuntimeHUD.uss?fileID=7433441132597879392&amp;guid=52c729ebd8fc047fc80580758be8b6b8&amp;type=3#RuntimeHUD" />
-    <ui:VisualElement name="Container" style="background-color: rgba(0, 0, 0, 0); width: 128px; height: 164px; flex-shrink: 0;">
-        <ui:VisualElement name="Boss" style="background-color: rgba(0, 0, 0, 0); width: 128px; height: 128px; flex-shrink: 0; background-image: url(&apos;project://database/Assets/Rival/Level/Renders/ZooRender2.renderTexture?fileID=8400000&amp;guid=15813d0fa66484211b86dd5ad71cee10&amp;type=2#ZooRender2&apos;);" />
-        <ui:ProgressBar value="22" name="BossBar" style="opacity: 0.7;" />
+    <ui:VisualElement name="Container" style="background-color: rgba(0, 0, 0, 0); width: 160px; height: 196px; flex-shrink: 0; align-self: auto;">
+        <ui:VisualElement name="Boss" style="background-color: rgba(0, 0, 0, 0); width: 160px; height: 160px; flex-shrink: 0; background-image: url(&apos;project://database/Assets/Rival/Level/Renders/ZooRender2.renderTexture?fileID=8400000&amp;guid=15813d0fa66484211b86dd5ad71cee10&amp;type=2#ZooRender2&apos;); -unity-background-scale-mode: scale-to-fit;" />
+        <ui:ProgressBar value="1" name="BossBar" high-value="1" style="opacity: 0.7;" />
     </ui:VisualElement>
 </ui:UXML>

@@ -4,7 +4,22 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Rival/Level/Scenes/GameLoop.unity
+    guid: 083b28f0db02944df8c3fdfc3be63407
+  - enabled: 1
+    path: Assets/Rival/Level/Scenes/Map.unity
+    guid: 3d0a4e4c99e19447bb3bdff8bed89280
+  - enabled: 1
+    path: Assets/Rival/Level/Scenes/WinScreen.unity
+    guid: 14c090bf3336e4687924ceeec3f02ef1
+  - enabled: 1
+    path: Assets/Rival/Level/Scenes/Onboarding.unity
+    guid: a3c5146cf26094e8d9236b0b6a5581b8
+  - enabled: 1
+    path: Assets/Rival/Level/Scenes/Splash.unity
+    guid: 71f74f15a5fbb4238bdc942752bffc2b
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 6991e790e0933450e9aca8b0d54079de, type: 2}

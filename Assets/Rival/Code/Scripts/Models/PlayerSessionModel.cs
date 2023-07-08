@@ -58,4 +58,31 @@ public class PlayerSessionModel
     {
         return _players.Length;
     }
+
+    public PlayerEntry GetPlayer(int currentPlayerIndex)
+    {
+        return _players[currentPlayerIndex];
+    }
+    
+    int GetNextActivePlayerIndex(int currentPlayerIndex)
+    {
+        for (int i = currentPlayerIndex + 1; i < _players.Length; i++)
+        {
+            if (_players[i].IsActive)
+            {
+                return i;
+            }
+        }
+        
+        for (int i = 0; i < currentPlayerIndex; i++)
+        {
+            if (_players[i].IsActive)
+            {
+                return i;
+            }
+        }
+
+        throw new Exception("No active players");
+    }
+    
 }

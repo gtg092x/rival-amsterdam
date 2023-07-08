@@ -3,35 +3,58 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MonsterLove.StateMachine;
+using Unity.VectorGraphics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
     public enum RivalGameState
     {
-        NONE,
-        VOLUME_UP,
-        MOVE_PREVIEW,
-        STEP_BACK,
-        GAMEPLAY_COUNTDOWN,
-        GAMEPLAY_PLAY,
-        GAMEPLAY_DAMAGE_SUMMARY,
-        ENDGAME,
+        None,
+        VolumeUp,
+        MovePreview,
+        StepBack,
+        GameplayCountdown,
+        GameplayPlay,
+        EndGame,
+        GameOver
     }
 
     public static RivalGameState[] StatesInOrder = new[]
     {
-        RivalGameState.NONE,
-        RivalGameState.VOLUME_UP,
-        RivalGameState.MOVE_PREVIEW,
-        RivalGameState.STEP_BACK,
-        RivalGameState.GAMEPLAY_COUNTDOWN,
-        RivalGameState.GAMEPLAY_PLAY,
-        RivalGameState.GAMEPLAY_DAMAGE_SUMMARY,
-        RivalGameState.ENDGAME,
+        RivalGameState.None,
+        RivalGameState.VolumeUp,
+        RivalGameState.MovePreview,
+        RivalGameState.StepBack,
+        RivalGameState.GameplayCountdown,
+        RivalGameState.GameplayPlay,
+        RivalGameState.GameOver,
+        RivalGameState.EndGame
     };
+
+    GameSessionModel GetGameSessionModel()
+    {
+        return playerSessionManager.GameModel;
+    }
+    
+    public void RestartGameplayLoopOrEnd()
+    {
+        if (GetGameSessionModel().GetLevelState().IsCompleted())
+        {
+            fsm.ChangeState(RivalGameState.EndGame);
+            return;
+        }
+        fsm.ChangeState(RivalGameState.GameplayCountdown);
+    }
+    
+    void GameplayCountdown_Enter()
+    {
+        playerSessionManager.GameModel.IncrementCurrentPlayer();
+    }
     
     public void NextState()
     {
@@ -42,6 +65,13 @@ public class GameManager : MonoBehaviour
         }
 
         var nextState = StatesInOrder[index + 1];
+
+        if (nextState == RivalGameState.GameplayCountdown)
+        {
+            RestartGameplayLoopOrEnd();
+            return;
+        }
+        
         fsm.ChangeState(nextState);
     }
 
@@ -51,15 +81,51 @@ public class GameManager : MonoBehaviour
         fsm = new StateMachine<RivalGameState>(this); 
         fsm.Changed += FsmOnChanged;
         OnGameStateChange.AddListener(BroadcastExitAndEnter);
-        fsm.ChangeState(RivalGameState.NONE);
+        fsm.ChangeState(RivalGameState.None);
+        
     }
 
     IEnumerator Start()
     {
+        BindGameModelEvents();
         yield return new WaitForEndOfFrame();
         NextState();
     }
-    
+
+    private void BindGameModelEvents()
+    {
+        playerSessionManager.OnPlayerDead.AddListener(HandlePlayerDie);
+        playerSessionManager.OnBossDead.AddListener(GameWin);
+    }
+
+    private void HandlePlayerDie(PlayerSessionModel.PlayerEntry player)
+    {
+        if (GetCurrentPlayer().Index == player.Index && HasLivingPlayers())
+        {
+            fsm.ChangeState(RivalGameState.GameplayCountdown);
+        }
+        else if (!HasLivingPlayers())
+        {
+            fsm.ChangeState(RivalGameState.GameOver);
+        }
+    }
+
+    private bool HasLivingPlayers()
+    {
+        return playerSessionManager.GameModel.GetLivePlayerCount() > 0;
+    }
+
+    private void OnDestroy()
+    {
+        UnbindGameModelEvents();
+    }
+
+    private void UnbindGameModelEvents()
+    {
+        playerSessionManager.OnBossDead.RemoveListener(GameWin);
+        playerSessionManager.OnPlayerDead.AddListener(HandlePlayerDie);
+    }
+
     [SerializeField]
     private PlayerSessionManager playerSessionManager;
 
@@ -79,7 +145,7 @@ public class GameManager : MonoBehaviour
     {
         OnGameStateChange?.Invoke(new GameStateChange()
         {
-            From = fsm.LastStateExists ? fsm.LastState : RivalGameState.NONE,
+            From = fsm.LastStateExists ? fsm.LastState : RivalGameState.None,
             To = obj,
         });
     }
@@ -101,9 +167,7 @@ public class GameManager : MonoBehaviour
     
     public GameStateEvent OnGameStateExit;
     public GameStateEvent OnGameStateEnter;
-    
-    
-
+  
     // Update is called once per frame
     void Update()
     {
@@ -115,4 +179,69 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public PlayerSessionModel.PlayerEntry GetCurrentPlayer()
+    {
+        return playerSessionManager.GameModel.GetCurrentPlayer();
+    }
+
+    public bool IsGameplayState(RivalGameState state)
+    {
+        return state == RivalGameState.GameplayPlay || state == RivalGameState.GameplayCountdown;
+    }
+
+    public PlayerSessionManager GetSessionManager()
+    {
+        return playerSessionManager;
+    }
+    
+    
+    private IEnumerator GameplayPlay_Enter()
+    {
+        Debug.Log("WRITE GAMEPLAY LOOP");
+        yield return null;
+    }
+
+    public bool IsCurrentPlayer(int playerIndex)
+    {
+        return playerSessionManager.GameModel.HasCurrentPlayer() && GetCurrentPlayer().Index == playerIndex;
+    }
+
+    public float GetPlayerHealth(int playerIndex)
+    {
+        return playerSessionManager.GameModel.GetPlayerHealth(playerIndex);
+    }
+
+    public void DebugMiss()
+    {
+        playerSessionManager.GameModel.HandleMissForCurrentPlayer();
+    }
+
+    public void DebugHit()
+    {
+        playerSessionManager.GameModel.HandleHitForCurrentPlayer();
+    }
+
+    public float GetBossHealth()
+    {
+        return playerSessionManager.GameModel.GetBossHealth();
+    }
+
+    [SerializeField] private SceneReference WinScene;
+    
+    IEnumerator EndGame_Enter()
+    {
+        var op = SceneManager.LoadSceneAsync(WinScene);
+        yield return new WaitUntil(() => op.isDone);
+    }
+
+    private void GameWin()
+    {
+        fsm.ChangeState(RivalGameState.EndGame);
+    }
+
+    public void Reset()
+    {
+        playerSessionManager.Reset();
+        fsm.ChangeState(RivalGameState.GameplayCountdown);
+    }
 }
