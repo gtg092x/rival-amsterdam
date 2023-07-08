@@ -276,8 +276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ui: {fileID: 1155520663}
   LoopScene:
-    sceneAsset: {fileID: 0}
-    scenePath: 
+    sceneAsset: {fileID: 102900000, guid: 083b28f0db02944df8c3fdfc3be63407, type: 3}
+    scenePath: Assets/Rival/Level/Scenes/GameLoop.unity
 --- !u!1 &1768445856
 GameObject:
   m_ObjectHideFlags: 0

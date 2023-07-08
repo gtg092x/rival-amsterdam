@@ -262,12 +262,8 @@ public class SceneReferencePropertyDrawer : PropertyDrawer
         // Left status label
         using (new EditorGUI.DisabledScope(readOnly))
         {
+            
             Rect labelRect = DrawUtils.GetLabelRect(position);
-            Rect iconRect = labelRect;
-            iconRect.width = iconContent.image.width + padSize;
-            labelRect.width -= iconRect.width;
-            labelRect.x += iconRect.width;
-            EditorGUI.PrefixLabel(iconRect, sceneControlID, iconContent);
             EditorGUI.PrefixLabel(labelRect, sceneControlID, labelContent);
         }
 

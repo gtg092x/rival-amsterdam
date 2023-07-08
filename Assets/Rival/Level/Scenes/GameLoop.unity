@@ -207,7 +207,9 @@ MonoBehaviour:
   OnGameStateEnter:
     m_PersistentCalls:
       m_Calls: []
-  WinScene: {fileID: 102900000, guid: 14c090bf3336e4687924ceeec3f02ef1, type: 3}
+  WinScene:
+    sceneAsset: {fileID: 102900000, guid: 14c090bf3336e4687924ceeec3f02ef1, type: 3}
+    scenePath: Assets/Rival/Level/Scenes/WinScreen.unity
 --- !u!4 &382759292
 Transform:
   m_ObjectHideFlags: 0
@@ -789,6 +791,52 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ed63a1ee5d24e4f05ae0920a1e9ea440, type: 2}
   BossAvatar: {fileID: 11400000, guid: 5f6338415902841bea45da74b1f0ddb1, type: 2}
   GameLevel: {fileID: 11400000, guid: e95009202df6c45bcbc64b9c3ec34a46, type: 2}
+--- !u!1 &1922255605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1922255607}
+  - component: {fileID: 1922255606}
+  m_Layer: 0
+  m_Name: CharacterEffectsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1922255606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922255605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760578afd2e0843a8923bf837b505b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 8178988051825137494, guid: 12799cd19ff5c440a857ad12621c3964, type: 3}
+  _gameManager: {fileID: 382759291}
+--- !u!4 &1922255607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922255605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1946190015 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 673892755822153821, guid: e9c3729535fdf4097b89b29d9816cba5,

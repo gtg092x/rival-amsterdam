@@ -66,5 +66,18 @@
 }
 
 .modal-content {
-    margin-top: var(--overlay-top-height);   
+    margin-top: var(--overlay-top-height);
+}
+
+.rival-runtime-button {
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url('project://database/Assets/Rival/Art/Vectors/RivalButtonBg.svg?fileID=7388822144124034973&guid=fb2666e6850fd48fda81125ab5ecc0bd&type=3#RivalButtonBg');
+    -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Poppint%20Font/Poppins-Bold%20SDF.asset?fileID=11400000&guid=b69add60be911445c899cd3577547d15&type=2#Poppins-Bold SDF');
+    width: 128px;
+    height: 64px;
+    -unity-background-scale-mode: scale-to-fit;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
 }

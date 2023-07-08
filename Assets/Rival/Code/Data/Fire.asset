@@ -15,3 +15,20 @@ MonoBehaviour:
   Prefab: {fileID: 2584368621543739529, guid: 8a0d7309dd0856d4daa3742a1b89b843, type: 3}
   AvatarName: Fire
   BoneFocus: RigHead
+  Taunts:
+  - {fileID: 8300000, guid: a3d805c209fd940e9bc1d260b85abef0, type: 3}
+  - {fileID: 8300000, guid: 9451b0910728a4f97a9a2e86f14fbc1c, type: 3}
+  - {fileID: 8300000, guid: aa8a74e5a25364684a7b35397d52990e, type: 3}
+  - {fileID: 8300000, guid: befcbc2badde6451ea14b8f354337bfe, type: 3}
+  - {fileID: 8300000, guid: 6738d82c942e948f0b0315f0a392c981, type: 3}
+  Ouches:
+  - {fileID: 8300000, guid: d6336fe3cb59b48b4ae02a34fc809168, type: 3}
+  - {fileID: 8300000, guid: c6004e757e0e54a57adb26578d133dba, type: 3}
+  - {fileID: 8300000, guid: 589a52608634c46f0b94b894474ffb83, type: 3}
+  - {fileID: 8300000, guid: 2d1c5d78845ef46d1a226254672c6e5c, type: 3}
+  - {fileID: 8300000, guid: 03a2c510163a24c0dbd9f129ab59e8ba, type: 3}
+  - {fileID: 8300000, guid: d89852d41dfde42768af3b27eb9ccf8f, type: 3}
+  - {fileID: 8300000, guid: 7bc17a20932bc4afab9c2bbf63a5fcf6, type: 3}
+  - {fileID: 8300000, guid: aa5131f6c40814b6a9627c9dc2e068aa, type: 3}
+  - {fileID: 8300000, guid: b6682637e69144088847b35b4642dbad, type: 3}
+  Hits: []
