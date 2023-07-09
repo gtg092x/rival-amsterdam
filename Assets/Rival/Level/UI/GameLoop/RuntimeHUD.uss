@@ -71,13 +71,19 @@
 
 .rival-runtime-button {
     background-color: rgba(255, 255, 255, 0);
-    background-image: url('project://database/Assets/Rival/Art/Vectors/RivalButtonBg.svg?fileID=7388822144124034973&guid=fb2666e6850fd48fda81125ab5ecc0bd&type=3#RivalButtonBg');
-    -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Poppint%20Font/Poppins-Bold%20SDF.asset?fileID=11400000&guid=b69add60be911445c899cd3577547d15&type=2#Poppins-Bold SDF');
-    width: 128px;
+    background-image: url('project://database/Assets/Rival/Art/Vectors/RivalButtonGameplay.svg?fileID=7388822144124034973&guid=afb37a9643d424afca372e34fdce84a4&type=3#RivalButtonGameplay');
+    -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Poppint%20Font/Poppins-Medium%20SDF.asset?fileID=11400000&guid=e491015ce468b4978966948466d5f897&type=2#Poppins-Medium SDF');
+    width: 163px;
     height: 64px;
     -unity-background-scale-mode: scale-to-fit;
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
     border-top-color: rgba(0, 0, 0, 0);
     border-bottom-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+    -unity-font-style: normal;
+    -unity-text-align: middle-center;
+}
+
+.unity-button {
 }
