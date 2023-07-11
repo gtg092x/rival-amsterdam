@@ -87,3 +87,12 @@
 
 .unity-button {
 }
+
+.rival-runtime-button {
+}
+
+.rival-menu-button {
+    background-image: url('project://database/Assets/Rival/Art/Vectors/RivalBlueMenu.svg?fileID=7388822144124034973&guid=a8c94f0c89e9f41929e66c534ac8b536&type=3#RivalBlueMenu');
+    color: rgb(255, 255, 255);
+    -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Tempo.ttf?fileID=12800000&guid=4d2ed3795dbb543539348ca00bf01a38&type=3#Tempo');
+}
