@@ -91,9 +91,11 @@ public class GameManager : MonoBehaviour
         if (IsGameplayState(delta.To) && !IsGameplayState(delta.From))
         {
             playerSessionManager.GameModel.SetPlayerIndex(0);
+            OnGameplayStateEnter?.Invoke();
         } else if (IsGameplayState(delta.From) && !IsGameplayState(delta.To))
         {
             playerSessionManager.GameModel.ResetCurrentPlayer();
+            OnGameplayStateExit?.Invoke();
         }
     }
 
@@ -185,6 +187,8 @@ public class GameManager : MonoBehaviour
     
     public GameStateEvent OnGameStateExit;
     public GameStateEvent OnGameStateEnter;
+    public UnityEvent OnGameplayStateEnter;
+    public UnityEvent OnGameplayStateExit;
   
     // Update is called once per frame
     void Update()

@@ -74,6 +74,20 @@ public class ZooController : MonoBehaviour
             return entry.ZooRenderTexture;
         }
     }
+
+    public void AnimateExistingRender(AvatarObject avatar, AnimationClip clip)
+    {
+        if (!_entries.ContainsKey(avatar.Prefab))
+        {
+            return;
+        }
+        var entry = _entries[avatar.Prefab];
+        if (entry.ActorInstance == null)
+        {
+            return;
+        }
+        entry.ActorInstance.GetComponent<Animator>().Play(clip.name);
+    }
     
     public void RemoveFromZoo(AvatarObject avatar)
     {

@@ -554,4 +554,5 @@ MonoBehaviour:
   _headOnCam: {fileID: 6844289231598629280}
   _sideCam: {fileID: 1167717520698947327}
   _camera: {fileID: 1502541192915074415}
+  ActorInstance: {fileID: 0}
   _baseRenderTexture: {fileID: 8400000, guid: ba3d5b6b7479045e6a9b038f5772b33c, type: 2}

@@ -11,8 +11,16 @@ public class WinScreenUIController : MonoBehaviour
     [SerializeField]
     private UIDocument _ui;
     
+    [SerializeField]
+    private ZooController _renderZoo;
+
+    [SerializeField] private AvatarObject _defeatedBoss;
+    
     private VisualElement rootElement;
 
+    private VisualElement BossAvatar => rootElement.Q<VisualElement>("Boss");
+    private Label BossName => rootElement.Q<Label>("BossName");
+    
     private void OnValidate()
     {
         _ui ??= GetComponent<UIDocument>();
@@ -24,9 +32,14 @@ public class WinScreenUIController : MonoBehaviour
         rootElement = _ui.rootVisualElement;
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
         rootElement.Q<Button>("Restart").clicked += Restart;
+        BossAvatar.style.backgroundImage = Background.FromRenderTexture(_renderZoo.GetRender(_defeatedBoss, true));
+        BossName.text = $"You defeated {_defeatedBoss.AvatarName}";
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<AudioSource>().PlayOneShot(_defeatedBoss.LoseSound);
+        _renderZoo.AnimateExistingRender(_defeatedBoss, _defeatedBoss.Die);
     }
 
     private void Restart()

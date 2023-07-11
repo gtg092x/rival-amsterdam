@@ -72,17 +72,20 @@ public class RenderZooEntry : MonoBehaviour
         }
         else
         {
-            var newTarget = GameObject.Instantiate(target.Game, Vector3.zero, Quaternion.identity, _zooBox.transform);
-            _sideCam.LookAt = newTarget.transform.Find(target.BonePath);
-            _sideCam.Follow = newTarget.transform;
-            _headOnCam.Follow = newTarget.transform;
-            _headOnCam.LookAt = newTarget.transform.Find(target.BonePath);
+            ActorInstance = GameObject.Instantiate(target.Game, Vector3.zero, Quaternion.identity, _zooBox.transform);
+            _sideCam.LookAt = ActorInstance.transform.Find(target.BonePath);
+            _sideCam.Follow = ActorInstance.transform;
+            _headOnCam.Follow = ActorInstance.transform;
+            _headOnCam.LookAt = ActorInstance.transform.Find(target.BonePath);
+            
             if (LayerIndex > 0)
             {
-                SetLayerRecursively(newTarget, LayerMask.NameToLayer($"Zoo{LayerIndex}"));    
+                SetLayerRecursively(ActorInstance, LayerMask.NameToLayer($"Zoo{LayerIndex}"));    
             }
         }
     }
+
+    public GameObject ActorInstance;
 
     public bool IsHeadOn
     {

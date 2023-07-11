@@ -11,4 +11,10 @@ public class AvatarObject : ScriptableObject
     public AudioClip[] Taunts;
     public AudioClip[] Ouches;
     public AudioClip[] Hits;
+    public AudioClip LoseSound;
+    public AnimationClip Ouch;
+    public AnimationClip Die;
+    public AnimationClip Hit;
+    public AnimationClip Idle;
+    public AnimationClip Taunt;
 }
