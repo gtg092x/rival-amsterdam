@@ -24,7 +24,7 @@
                 <ui:VisualElement name="BR" class="view-corner" style="background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Art/Vectors/BRCorner.svg?fileID=7388822144124034973&amp;guid=11bb51a52ed714f068ad1f4c1c3c60dd&amp;type=3#BRCorner&apos;); right: -12px; bottom: -12px; display: none;" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="BottomBar" />
+        <ui:VisualElement name="BottomBar" style="display: none;" />
     </ui:VisualElement>
     <PlayerReadyElement playerName="Player 2" name="PlayerReadyModal" playerAvatar="project://database/Assets/Rival/Level/Renders/ZooRender1.renderTexture?fileID=8400000&amp;guid=ba3d5b6b7479045e6a9b038f5772b33c&amp;type=2#ZooRender1" class="modal" style="display: flex;" />
     <ui:VisualElement name="VolumeGate" class="modal" style="flex-grow: 0; justify-content: center; align-items: center; display: none;">
@@ -51,4 +51,5 @@
         <ui:Label tabindex="-1" text="Game over!" display-tooltip-when-elided="true" />
         <ui:Button text="Retry" display-tooltip-when-elided="true" name="Retry" class="rival-runtime-button" style="width: 200px;" />
     </ui:VisualElement>
+    <ui:VisualElement name="GameWin" class="modal" style="flex-grow: 1; background-color: rgb(255, 255, 255); display: flex; align-items: center; justify-content: center; transition-duration: 1s; opacity: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;" />
 </ui:UXML>

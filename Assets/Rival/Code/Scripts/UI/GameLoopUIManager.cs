@@ -17,6 +17,7 @@ public class GameLoopUIManager : MonoBehaviour
     
     private VisualElement rootElement;
     private VisualElement VolumeGate => rootElement.Q<VisualElement>("VolumeGate");
+    private VisualElement GameWin => rootElement.Q<VisualElement>("GameWin");
     private VisualElement Video => rootElement.Q<VisualElement>("Video");
     private VisualElement GameOver => rootElement.Q<VisualElement>("GameOver");
     private PlayerReadyElement PlayerCountdown => rootElement.Q<PlayerReadyElement>("PlayerReadyModal");
@@ -170,6 +171,7 @@ public class GameLoopUIManager : MonoBehaviour
         GameplayOverlay.style.display = DisplayStyle.None;
         GameOver.style.display = DisplayStyle.None;
         Video.style.display = DisplayStyle.None;
+        GameWin.style.display = DisplayStyle.None;
     }
 
     void HandleStateExit(GameManager.RivalGameState state)
@@ -198,6 +200,7 @@ public class GameLoopUIManager : MonoBehaviour
                 GameOver.style.display = DisplayStyle.None;
                 break;
             case GameManager.RivalGameState.EndGame:
+                GameWin.style.display = DisplayStyle.None;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
@@ -338,10 +341,18 @@ public class GameLoopUIManager : MonoBehaviour
                 GameOver.style.display = DisplayStyle.Flex;
                 break;
             case GameManager.RivalGameState.EndGame:
+                GameWin.style.display = DisplayStyle.Flex;
+                StartCoroutine(AddFullOpacityToWin());
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }
+    }
+
+    private IEnumerator AddFullOpacityToWin()
+    {
+        yield return new WaitForSeconds(0.1f);
+        GameWin.AddToClassList("full-opacity");
     }
 
     private void OnValidate()

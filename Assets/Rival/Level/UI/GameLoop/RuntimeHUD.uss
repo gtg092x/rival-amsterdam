@@ -96,3 +96,7 @@
     color: rgb(255, 255, 255);
     -unity-font-definition: url('project://database/Assets/Rival/Art/Fonts/Tempo.ttf?fileID=12800000&guid=4d2ed3795dbb543539348ca00bf01a38&type=3#Tempo');
 }
+
+.full-opacity {
+    opacity: 1;
+}

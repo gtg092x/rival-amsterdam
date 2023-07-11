@@ -252,6 +252,7 @@ public class GameManager : MonoBehaviour
     
     IEnumerator EndGame_Enter()
     {
+        yield return new WaitForSeconds(0.5f);
         var op = SceneManager.LoadSceneAsync(WinScene);
         yield return new WaitUntil(() => op.isDone);
     }
