@@ -5,14 +5,19 @@ using System.Linq;
 using Cinemachine;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Playables;
 using UnityEngine.UIElements;
 
 public class GameLoopUIManager : MonoBehaviour
 {
     public UIDocument MainUI;
-
+    
+    public PoseReaderController PoseReader;
+    
     private VisualElement rootElement;
     private VisualElement VolumeGate => rootElement.Q<VisualElement>("VolumeGate");
+    private VisualElement Video => rootElement.Q<VisualElement>("Video");
     private VisualElement GameOver => rootElement.Q<VisualElement>("GameOver");
     private PlayerReadyElement PlayerCountdown => rootElement.Q<PlayerReadyElement>("PlayerReadyModal");
     private BossHealthElement BossHealth => rootElement.Q<BossHealthElement>();
@@ -46,6 +51,18 @@ public class GameLoopUIManager : MonoBehaviour
     {
         _gameManager.OnGameStateExit.AddListener(HandleStateExit);
         _gameManager.OnGameStateEnter.AddListener(HandleStateEnter);
+        _gameManager.OnGameStateChange.AddListener(HandleGameStateChange);
+    }
+
+    private void HandleGameStateChange(GameManager.GameStateChange delta)
+    {
+        if (_gameManager.IsGameplayState(delta.From) && !_gameManager.IsGameplayState(delta.To))
+        {
+            HandleExitGameplay();
+        } else if (_gameManager.IsGameplayState(delta.To) && !_gameManager.IsGameplayState(delta.From))
+        {
+            HandleEnterGameplay();
+        }
     }
 
     private void OnDestroy()
@@ -57,7 +74,7 @@ public class GameLoopUIManager : MonoBehaviour
     {
         rootElement.Q<Button>("VolumeContinue").clicked -= _gameManager.NextState;
         rootElement.Q<Button>("PreviewContinue").clicked -= _gameManager.NextState;
-        rootElement.Q<Button>("PoseContinue").clicked -= _gameManager.NextState;
+        //rootElement.Q<Button>("PoseContinue").clicked -= _gameManager.NextState;
         
         rootElement.Q<Button>("DebugHit").clicked -= _gameManager.DebugHit;
         rootElement.Q<Button>("DebugMiss").clicked -= _gameManager.DebugMiss;
@@ -69,10 +86,10 @@ public class GameLoopUIManager : MonoBehaviour
     {
         rootElement.Q<Button>("VolumeContinue").clicked += _gameManager.NextState;
         rootElement.Q<Button>("PreviewContinue").clicked += _gameManager.NextState;
-        rootElement.Q<Button>("PoseContinue").clicked += _gameManager.NextState;
+        //rootElement.Q<Button>("PoseContinue").clicked += _gameManager.NextState;
         
-        rootElement.Q<Button>("DebugHit").clicked += _gameManager.DebugHit;
-        rootElement.Q<Button>("DebugMiss").clicked += _gameManager.DebugMiss;
+        //rootElement.Q<Button>("DebugHit").clicked += _gameManager.DebugHit;
+        //rootElement.Q<Button>("DebugMiss").clicked += _gameManager.DebugMiss;
         
         rootElement.Q<Button>("Retry").clicked += _gameManager.Reset;
     }
@@ -84,7 +101,7 @@ public class GameLoopUIManager : MonoBehaviour
         var ready = rootElement.Q<PlayerReadyElement>();
         ready.PlayerName = $"{currentPlayer.Avatar.AvatarName}";
         ready.PlayerAvatar = _zooManager.GetRender(currentPlayer.Avatar);
-        ready.Init(3);
+        ready.Init(2);
         yield return new WaitForSeconds(1f);
         yield return ready.PerformCountdown();
         _gameManager.NextState();
@@ -152,6 +169,7 @@ public class GameLoopUIManager : MonoBehaviour
         PlayerCountdown.style.display = DisplayStyle.None;
         GameplayOverlay.style.display = DisplayStyle.None;
         GameOver.style.display = DisplayStyle.None;
+        Video.style.display = DisplayStyle.None;
     }
 
     void HandleStateExit(GameManager.RivalGameState state)
@@ -185,23 +203,50 @@ public class GameLoopUIManager : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
         }
 
-        if (_gameManager.IsGameplayState(state))
-        {
-            HandleExitGameplay();
-        }
+        
     }
 
     private void HandleExitGameplay()
     {
         UnbindGameplayEvents();
+        ExitPoseRead();
         HandlePlayerBlur(_gameManager.GetCurrentPlayer());
     }
 
     private void HandleEnterGameplay()
     {
         BindGameplayEvents();
+        EnterPoseRead();
         HandlePlayerFocus(_gameManager.GetCurrentPlayer());
+        
     }
+    
+    private void ExitPoseRead()
+    {
+        Video.style.display = DisplayStyle.None;
+        PoseReader.OnPowerPose.RemoveListener(HandlePowerPose);
+        PoseReader.OnPose.RemoveListener(HandlePose);
+        PoseReader.EndRead();
+    }
+
+    private void EnterPoseRead()
+    {
+        Video.style.display = DisplayStyle.Flex;
+        PoseReader.OnPowerPose.AddListener(HandlePowerPose);
+        PoseReader.OnPose.AddListener(HandlePose);
+        PoseReader.Read();
+    }
+
+    private void HandlePose(PoseReaderController.Poses pose)
+    {
+        _gameManager.DebugHit();
+    }
+
+    private void HandlePowerPose()
+    {
+        _gameManager.NextState();
+    }
+
 
     private void UnbindGameplayEvents()
     {
@@ -296,10 +341,6 @@ public class GameLoopUIManager : MonoBehaviour
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(state), state, null);
-        }
-        if (_gameManager.IsGameplayState(state))
-        {
-            HandleEnterGameplay();
         }
     }
 

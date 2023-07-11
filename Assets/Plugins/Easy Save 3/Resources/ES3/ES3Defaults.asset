@@ -32,9 +32,18 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - CFXRDemo
+    - CFXRRuntime
     - Cinemachine
+    - KinoBloom.Runtime
     - MonsterLove.StateMachine.Runtime
     - MonsterLove.StateMachine.Samples
+    - Timeline.Samples.Annotation
+    - Timeline.Samples.Text
+    - Timeline.Samples.TimeDilation
+    - Timeline.Samples.Tween
+    - Timeline.Samples.Utilities
+    - Timeline.Samples.Video
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0
   autoUpdateReferences: 1

@@ -37,8 +37,8 @@ public class GameSessionModel: IDisposable
     public GameSessionModel(PlayerSessionModel sessionModel, GameLevelModel level)
     {
         session = sessionModel;
-        ResetData();
         _level = level;
+        ResetData();
         session.OnPlayerAdd += SessionModelOnOnPlayerAdd;
     }
 
@@ -52,7 +52,7 @@ public class GameSessionModel: IDisposable
         for (int i = 0; i < _playerHealths.Length; i++)
         {
             _playerHealths[i] = DEFAULT_HEALTH;
-            _playerHits[i] = 0;
+            _playerHits[i] = _level.GetDefaultHitsPerPlayer();
             _playerMisses[i] = 0;
         }
 
@@ -74,7 +74,7 @@ public class GameSessionModel: IDisposable
     private void SessionModelOnOnPlayerAdd(PlayerSessionModel.PlayerEntry obj)
     {
         _playerHealths = _playerHealths.Append(DEFAULT_HEALTH).ToArray();
-        _playerHits = _playerHits.Append(0).ToArray();
+        _playerHits = _playerHits.Append(_level.GetDefaultHitsPerPlayer()).ToArray();
         _playerMisses = _playerMisses.Append(0).ToArray();
     }
 
@@ -142,18 +142,18 @@ public class GameSessionModel: IDisposable
 
     public void IncrementCurrentPlayer()
     {
-        var lastPlayer = _currentPlayerIndex;
-        _currentPlayerIndex = GetNextLivingPlayerIndex(_currentPlayerIndex);
-        if (lastPlayer > -1)
-        {
-            OnPlayerIndexBlur?.Invoke(lastPlayer);    
-        }
+        SetPlayerIndex(GetNextLivingPlayerIndex(_currentPlayerIndex));
+    }
 
-        if (_currentPlayerIndex > -1)
-        {
-            OnPlayerIndexFocus?.Invoke(_currentPlayerIndex);    
-        }
-        
+    private void BlurPlayer(int playerIndex)
+    {
+        OnPlayerIndexBlur?.Invoke(playerIndex);    
+    }
+
+    private void FocusPlayer(int playerIndex)
+    {
+        _playerHits[_currentPlayerIndex] = _level.GetDefaultHitsPerPlayer();
+        OnPlayerIndexFocus?.Invoke(playerIndex);
     }
 
     public bool HasCurrentPlayer()
@@ -169,6 +169,16 @@ public class GameSessionModel: IDisposable
     public void HandleHitForCurrentPlayer()
     {
         AddBossHealth(-_level.GetHitDamage());
+        ReduceHitsRemaining();
+    }
+
+    private void ReduceHitsRemaining()
+    {
+        _playerHits[_currentPlayerIndex] -= 1;
+        if (_playerHits[_currentPlayerIndex] <= 0)
+        {
+            IncrementCurrentPlayer();
+        }
     }
 
     public float GetBossHealth()
@@ -198,7 +208,7 @@ public class GameSessionModel: IDisposable
         return -1;
     }
 
-    private bool isAlive(PlayerSessionModel.PlayerEntry player)
+    public bool isAlive(PlayerSessionModel.PlayerEntry player)
     {
         return player.IsActive && _playerHealths[player.Index] > 0f;
     }
@@ -206,5 +216,29 @@ public class GameSessionModel: IDisposable
     public void Reset()
     {
         ResetData();
+    }
+
+    public void SetPlayerIndex(int index)
+    {
+        if (index == _currentPlayerIndex)
+        {
+            return;
+        }
+        Debug.Log($"SETTING PLAYER INDEX {index}");
+        var prevPlayer = _currentPlayerIndex;
+        _currentPlayerIndex = index;
+        if (prevPlayer > -1)
+        {
+            BlurPlayer(prevPlayer);
+        }
+        if (index > -1)
+        {
+            FocusPlayer(index);
+        }
+    }
+    
+    public void ResetCurrentPlayer()
+    {
+        SetPlayerIndex(-1);
     }
 }

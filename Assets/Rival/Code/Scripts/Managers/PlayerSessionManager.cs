@@ -62,6 +62,7 @@ public class PlayerSessionManager : MonoBehaviour
         GameModel.OnPlayerRez += GameModelOnOnPlayerRez;
         GameModel.OnAllPlayersDead += GameModelOnOnAllPlayersDead;
         GameModel.OnBossDead += GameModelOnOnBossDead;
+        
     }
     
     private void UnbindGameModelEvents()

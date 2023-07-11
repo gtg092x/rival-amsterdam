@@ -1,30 +1,30 @@
 public class GameLevelModel
 {
 
-    public GameLevelModel(int segmentsPerPlayer, float missDamage, float hitDamage)
+    public GameLevelModel(int turnsPerPlayer, float missDamage, float hitDamage)
     {
-        _segmentsPerPlayer = segmentsPerPlayer;
+        _turnsPerPlayer = turnsPerPlayer;
         _missDamage = missDamage;
         _hitDamage = hitDamage;
     }
     
-    private int _segmentsPerPlayer;
+    private int _turnsPerPlayer;
     private readonly float _missDamage;
     private readonly float _hitDamage;
 
-    public int GetSegmentsRemaining()
+    public int GetDefaultHitsPerPlayer()
     {
-        return _segmentsPerPlayer;
+        return _turnsPerPlayer;
     }
     
     public void DecrementSegment()
     {
-        _segmentsPerPlayer--;
+        _turnsPerPlayer--;
     }
 
     public bool IsCompleted()
     {
-        return _segmentsPerPlayer <= 0;
+        return _turnsPerPlayer <= 0;
     }
 
     public float GetMissDamage()

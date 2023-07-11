@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     {
         RivalGameState.None,
         RivalGameState.VolumeUp,
-        RivalGameState.MovePreview,
+        // RivalGameState.MovePreview,
         RivalGameState.StepBack,
         RivalGameState.GameplayCountdown,
         RivalGameState.GameplayPlay,
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     
     void GameplayCountdown_Enter()
     {
-        playerSessionManager.GameModel.IncrementCurrentPlayer();
+        // playerSessionManager.GameModel.IncrementCurrentPlayer();
     }
     
     public void NextState()
@@ -82,7 +82,19 @@ public class GameManager : MonoBehaviour
         fsm.Changed += FsmOnChanged;
         OnGameStateChange.AddListener(BroadcastExitAndEnter);
         fsm.ChangeState(RivalGameState.None);
+        OnGameStateChange.AddListener(HandleGameplayEnter);
         
+    }
+
+    private void HandleGameplayEnter(GameStateChange delta)
+    {
+        if (IsGameplayState(delta.To) && !IsGameplayState(delta.From))
+        {
+            playerSessionManager.GameModel.SetPlayerIndex(0);
+        } else if (IsGameplayState(delta.From) && !IsGameplayState(delta.To))
+        {
+            playerSessionManager.GameModel.ResetCurrentPlayer();
+        }
     }
 
     IEnumerator Start()
@@ -96,15 +108,20 @@ public class GameManager : MonoBehaviour
     {
         playerSessionManager.OnPlayerDead.AddListener(HandlePlayerDie);
         playerSessionManager.OnBossDead.AddListener(GameWin);
+        playerSessionManager.OnPlayerFocus.AddListener(HandlePlayerChange);
+    }
+
+    private void HandlePlayerChange(PlayerSessionModel.PlayerEntry player)
+    {
+        if (GetCurrentPlayer().Index == player.Index && HasLivingPlayers())
+        {
+            fsm.ChangeState(RivalGameState.StepBack);
+        }
     }
 
     private void HandlePlayerDie(PlayerSessionModel.PlayerEntry player)
     {
-        if (GetCurrentPlayer().Index == player.Index && HasLivingPlayers())
-        {
-            fsm.ChangeState(RivalGameState.GameplayCountdown);
-        }
-        else if (!HasLivingPlayers())
+        if (!HasLivingPlayers())
         {
             fsm.ChangeState(RivalGameState.GameOver);
         }
@@ -123,7 +140,8 @@ public class GameManager : MonoBehaviour
     private void UnbindGameModelEvents()
     {
         playerSessionManager.OnBossDead.RemoveListener(GameWin);
-        playerSessionManager.OnPlayerDead.AddListener(HandlePlayerDie);
+        playerSessionManager.OnPlayerDead.RemoveListener(HandlePlayerDie);
+        playerSessionManager.OnPlayerFocus.RemoveListener(HandlePlayerChange);
     }
 
     [SerializeField]
@@ -186,7 +204,7 @@ public class GameManager : MonoBehaviour
 
     public bool IsGameplayState(RivalGameState state)
     {
-        return state == RivalGameState.GameplayPlay || state == RivalGameState.GameplayCountdown;
+        return state == RivalGameState.GameplayPlay || state == RivalGameState.GameplayCountdown || state == RivalGameState.StepBack;
     }
 
     public PlayerSessionManager GetSessionManager()
@@ -242,6 +260,11 @@ public class GameManager : MonoBehaviour
     public void Reset()
     {
         playerSessionManager.Reset();
-        fsm.ChangeState(RivalGameState.GameplayCountdown);
+        fsm.ChangeState(RivalGameState.StepBack);
+    }
+
+    public bool IsAlive(PlayerSessionModel.PlayerEntry arg0)
+    {
+        return playerSessionManager.GameModel.isAlive(arg0);
     }
 }

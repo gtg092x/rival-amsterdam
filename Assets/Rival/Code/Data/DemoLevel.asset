@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524a0fe4cd5a241f890316f46d856083, type: 3}
   m_Name: DemoLevel
   m_EditorClassIdentifier: 
-  Segments: 3
+  HitsPerPlayer: 5
+  MissDamage: 0.2
+  BossDamage: 0.05555555
