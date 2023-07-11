@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitsPerPlayer: 5
   MissDamage: 0.2
-  BossDamage: 0.05555555
+  BossDamage: 0.05655555
