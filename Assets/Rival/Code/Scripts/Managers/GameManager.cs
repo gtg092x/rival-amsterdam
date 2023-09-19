@@ -55,6 +55,11 @@ public class GameManager : MonoBehaviour
     {
         // playerSessionManager.GameModel.IncrementCurrentPlayer();
     }
+
+    public RivalGameState GetCurrentState()
+    {
+        return fsm.State;
+    }
     
     public void NextState()
     {
@@ -83,11 +88,21 @@ public class GameManager : MonoBehaviour
         OnGameStateChange.AddListener(BroadcastExitAndEnter);
         fsm.ChangeState(RivalGameState.None);
         OnGameStateChange.AddListener(HandleGameplayEnter);
+        OnGameStateChange.AddListener(HandleAllBroadcasts);
         
+    }
+
+    private void HandleAllBroadcasts(GameStateChange arg0)
+    {
+        if (arg0.To == RivalGameState.StepBack)
+        {
+            OnStepBack?.Invoke();
+        }
     }
 
     private void HandleGameplayEnter(GameStateChange delta)
     {
+        playerSessionManager.GameModel.ResetCooldowns();
         if (IsGameplayState(delta.To) && !IsGameplayState(delta.From))
         {
             playerSessionManager.GameModel.SetPlayerIndex(0);
@@ -105,6 +120,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         NextState();
     }
+
+    public UnityEvent OnStepBack;
+    
+    
 
     private void BindGameModelEvents()
     {
@@ -193,7 +212,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (playerSessionManager != null && playerSessionManager.GameModel != null)
+        {
+            playerSessionManager.GameModel.Tick(Time.deltaTime);    
+        }
     }
 
     public void RequestState(RivalGameState state)

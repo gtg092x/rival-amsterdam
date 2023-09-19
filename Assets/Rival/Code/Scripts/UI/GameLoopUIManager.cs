@@ -26,6 +26,8 @@ public class GameLoopUIManager : MonoBehaviour
     private VisualElement PoseGate => rootElement.Q<VisualElement>("PoseGate");
     private VisualElement GameplayOverlay => rootElement.Q<VisualElement>("Gameplay");
     private VisualElement BossGameOver => rootElement.Q<VisualElement>("BossGameOver");
+    
+    private VisualElement SkeleOverlay => rootElement.Q<VisualElement>("SkeleOverlay");
 
     private PlayerHealthElement GetPlayerHealthElement(int index)
     {
@@ -64,6 +66,28 @@ public class GameLoopUIManager : MonoBehaviour
         {
             HandleEnterGameplay();
         }
+
+        if (isSkeleState(delta.To) && !isSkeleState(delta.From))
+        {
+            ShowSkelPreview();
+        } else if(isSkeleState(delta.From) && !isSkeleState(delta.To)) {
+            ClearSkelPreview();
+        }
+    }
+
+    private void ClearSkelPreview()
+    {
+        SkeleOverlay.style.display = DisplayStyle.None;
+    }
+
+    private void ShowSkelPreview()
+    {
+        SkeleOverlay.style.display = DisplayStyle.Flex;
+    }
+
+    bool isSkeleState(GameManager.RivalGameState state)
+    {
+        return _gameManager.IsGameplayState(state) || state == GameManager.RivalGameState.StepBack;
     }
 
     private void OnDestroy()
@@ -221,7 +245,6 @@ public class GameLoopUIManager : MonoBehaviour
         BindGameplayEvents();
         EnterPoseRead();
         HandlePlayerFocus(_gameManager.GetCurrentPlayer());
-        
     }
     
     private void ExitPoseRead()
@@ -242,12 +265,18 @@ public class GameLoopUIManager : MonoBehaviour
 
     private void HandlePose(PoseReaderController.Poses pose)
     {
-        _gameManager.DebugHit();
+        if (_gameManager.GetCurrentState() == GameManager.RivalGameState.GameplayPlay)
+        {
+            _gameManager.DebugHit();    
+        }
     }
 
     private void HandlePowerPose()
     {
-        _gameManager.NextState();
+        if (_gameManager.GetCurrentState() == GameManager.RivalGameState.StepBack)
+        {
+            _gameManager.NextState();    
+        }
     }
 
 

@@ -34,12 +34,20 @@ public class GameSessionModel: IDisposable
     }
     
     private GameLevelModel _level;
-    public GameSessionModel(PlayerSessionModel sessionModel, GameLevelModel level)
+
+    [Serializable]
+    public struct GameConfig
+    {
+        public float hitCooldown;
+    }
+    
+    public GameSessionModel(PlayerSessionModel sessionModel, GameLevelModel level, GameConfig config)
     {
         session = sessionModel;
         _level = level;
         ResetData();
         session.OnPlayerAdd += SessionModelOnOnPlayerAdd;
+        _hitCooldown = config.hitCooldown;
     }
 
     void ResetData()
@@ -166,10 +174,23 @@ public class GameSessionModel: IDisposable
         AddPlayerHealth(_currentPlayerIndex, -_level.GetHitDamage());
     }
 
+    private float hitCooldownRemaining = 0f;
+
+    public void Tick(float delta)
+    {
+        hitCooldownRemaining = Math.Max(hitCooldownRemaining - delta, 0f);
+    }
+
+    private float _hitCooldown = 1f;
     public void HandleHitForCurrentPlayer()
     {
-        AddBossHealth(-_level.GetHitDamage());
-        ReduceHitsRemaining();
+        if (hitCooldownRemaining <= 0f)
+        {
+            AddBossHealth(-_level.GetHitDamage());
+            ReduceHitsRemaining();
+            hitCooldownRemaining += _hitCooldown;
+        }
+        
     }
 
     private void ReduceHitsRemaining()
@@ -240,5 +261,10 @@ public class GameSessionModel: IDisposable
     public void ResetCurrentPlayer()
     {
         SetPlayerIndex(-1);
+    }
+
+    public void ResetCooldowns()
+    {
+        hitCooldownRemaining = 0f;
     }
 }

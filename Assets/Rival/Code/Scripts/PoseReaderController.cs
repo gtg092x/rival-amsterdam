@@ -40,14 +40,28 @@ public class PoseReaderController : MonoBehaviour
     [SerializeField]
     private PlayableDirector _director;
 
+    [SerializeField]
+    private UnityEvent OnRead;
+    
+    [SerializeField]
+    private UnityEvent OnEndRead;
+    
     public void Read()
     {
-        _director.time = 0f;
-        _director.Play();
+        //_director.time = 0f;
+        //_director.Play();
+        OnRead?.Invoke();
+    }
+    
+    private IEnumerator DoPowerPoseInOne()
+    {
+        yield return new WaitForSeconds(1f);
+        DoPowerPose();
     }
 
     public void EndRead()
     {
-        _director.Stop();
+        //_director.Stop();
+        OnEndRead?.Invoke();
     }
 }

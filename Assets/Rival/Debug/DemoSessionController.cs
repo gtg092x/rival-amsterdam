@@ -16,6 +16,7 @@ public class DemoSessionController : MonoBehaviour
     public AvatarObject[] PlayerAvatars;
     public AvatarObject BossAvatar;
     public LevelLayoutObject GameLevel;
+    public GameSessionModel.GameConfig GameConfig;
     void Start()
     {
         var demoModel = new PlayerSessionModel();
@@ -26,7 +27,7 @@ public class DemoSessionController : MonoBehaviour
         demoModel.SetBossAvatar(BossAvatar);
         
         playerSessionManager.SetSession(demoModel);
-        var gameModel = new GameSessionModel(demoModel, GameLevel.GetModel());
+        var gameModel = new GameSessionModel(demoModel, GameLevel.GetModel(), GameConfig);
         gameModel.SetBossHealth(1f);
         playerSessionManager.SetGameModel(gameModel);
     }
