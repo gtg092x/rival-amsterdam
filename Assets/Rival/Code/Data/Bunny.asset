@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44d9283ab26d48f0baacbc024c93103, type: 3}
   m_Name: Bunny
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 3826281789200122343, guid: d38dfa2e0a60344408e5d41e3a34e27f, type: 3}
+  Prefab: {fileID: 5376223778067328925, guid: 7f00ac5dbeda243fbbe322d01644c09e, type: 3}
   AvatarName: Bunny
+  BoneFocus: RigPelvis
+  Taunts: []
+  Ouches: []
+  Hits: []
+  LoseSound: {fileID: 0}
+  Ouch: {fileID: 0}
+  Die: {fileID: 0}
+  Hit: {fileID: 0}
+  Idle: {fileID: 0}
+  Taunt: {fileID: 0}

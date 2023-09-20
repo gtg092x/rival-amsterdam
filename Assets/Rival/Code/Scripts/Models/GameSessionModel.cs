@@ -13,7 +13,7 @@ public class GameSessionModel: IDisposable
     private float _bossHealth = DEFAULT_HEALTH;
 
     public event Action<int, float> OnHealthUpdate;
-    public event Action<int, float> OnHitUpdate;
+    public event Action<int, int> OnHitUpdate;
     public event Action<int, float> OnMissUpdate;
     public event Action<float> OnBossHealthUpdate;
     public event Action<int> OnPlayerDead;
@@ -89,6 +89,11 @@ public class GameSessionModel: IDisposable
     public float GetPlayerHealth(int index)
     {
         return _playerHealths[index];
+    }
+    
+    public int GetPlayerHits(int index)
+    {
+        return _playerHits[index];
     }
     
     public void SetPlayerHealth(int index, float health)
@@ -196,6 +201,7 @@ public class GameSessionModel: IDisposable
     private void ReduceHitsRemaining()
     {
         _playerHits[_currentPlayerIndex] -= 1;
+        OnHitUpdate?.Invoke(_currentPlayerIndex, _playerHits[_currentPlayerIndex]);
         if (_playerHits[_currentPlayerIndex] <= 0)
         {
             IncrementCurrentPlayer();

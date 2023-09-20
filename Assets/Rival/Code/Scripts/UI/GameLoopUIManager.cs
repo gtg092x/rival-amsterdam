@@ -24,6 +24,10 @@ public class GameLoopUIManager : MonoBehaviour
     private BossHealthElement BossHealth => rootElement.Q<BossHealthElement>();
     private VisualElement PreviewGate => rootElement.Q<VisualElement>("PreviewGate");
     private VisualElement PoseGate => rootElement.Q<VisualElement>("PoseGate");
+    
+    private TextElement PoseMessage => rootElement.Q<TextElement>("PowerPoseMessage");
+    
+    private TextElement HitsLeft => rootElement.Q<TextElement>("HitsLeft");
     private VisualElement GameplayOverlay => rootElement.Q<VisualElement>("Gameplay");
     private VisualElement BossGameOver => rootElement.Q<VisualElement>("BossGameOver");
     
@@ -55,6 +59,12 @@ public class GameLoopUIManager : MonoBehaviour
         _gameManager.OnGameStateExit.AddListener(HandleStateExit);
         _gameManager.OnGameStateEnter.AddListener(HandleStateEnter);
         _gameManager.OnGameStateChange.AddListener(HandleGameStateChange);
+        _gameManager.GetSessionManager().GameModel.OnHitUpdate += GameModelOnOnHitUpdate;
+    }
+
+    private void GameModelOnOnHitUpdate(int player, int hitsRemaining)
+    {
+        HitsLeft.text = $"Player {player + 1}\nHits left: {hitsRemaining}";
     }
 
     private void HandleGameStateChange(GameManager.GameStateChange delta)
@@ -287,6 +297,7 @@ public class GameLoopUIManager : MonoBehaviour
         session.OnPlayerFocus.RemoveListener(HandlePlayerFocus);
         session.OnBossHealthUpdate.RemoveListener(GameModelOnOnBossHealthUpdate);
         session.OnHealthUpdate.RemoveListener(GameModelOnOnHealthUpdate);
+        _gameManager.GetSessionManager().GameModel.OnHitUpdate -= GameModelOnOnHitUpdate;
     }
 
     private void GameModelOnOnHealthUpdate(PlayerSessionModel.PlayerEntry playerIndex, float health)
@@ -326,6 +337,9 @@ public class GameLoopUIManager : MonoBehaviour
     {
         var element = GetPlayerHealthElement(player.Index);
         element.HighlightAvatar = true;
+        
+        PoseMessage.text = $"Player {player.Index + 1}\nDo a power pose!";
+        GameModelOnOnHitUpdate(player.Index, _gameManager.GetSessionManager().GameModel.GetPlayerHits(player.Index));
     }
     
     private void HandlePlayerBlur(PlayerSessionModel.PlayerEntry player)

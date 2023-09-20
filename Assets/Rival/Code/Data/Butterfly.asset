@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44d9283ab26d48f0baacbc024c93103, type: 3}
   m_Name: Butterfly
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 4519994143267147040, guid: 70b32b9f3d854b0468cff9c3aec5e5a7, type: 3}
+  Prefab: {fileID: 4058257401812354314, guid: 9dd8f4d56ee174daa86bb75b596173a2, type: 3}
   AvatarName: Butterfly
   BoneFocus: RigHub
+  Taunts: []
+  Ouches: []
+  Hits: []
+  LoseSound: {fileID: 0}
+  Ouch: {fileID: 0}
+  Die: {fileID: 0}
+  Hit: {fileID: 0}
+  Idle: {fileID: 0}
+  Taunt: {fileID: 0}

@@ -65,6 +65,10 @@
     padding-left: var(--overlay-side-width);
 }
 
+.overlay-bg {
+    background-color: var(--loop-overlay-color);
+}
+
 .modal-content {
     margin-top: var(--overlay-top-height);
 }

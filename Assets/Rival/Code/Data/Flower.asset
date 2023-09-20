@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44d9283ab26d48f0baacbc024c93103, type: 3}
   m_Name: Flower
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 8663426514577559114, guid: 81dfb0b2707204f4fb8cd3062f9f1c6c, type: 3}
+  Prefab: {fileID: 1462570167119853993, guid: 2f50d59bd001f410d86457daa6bf7678, type: 3}
   AvatarName: Flower
+  BoneFocus: RigPelvis
+  Taunts: []
+  Ouches: []
+  Hits: []
+  LoseSound: {fileID: 0}
+  Ouch: {fileID: 0}
+  Die: {fileID: 0}
+  Hit: {fileID: 0}
+  Idle: {fileID: 0}
+  Taunt: {fileID: 0}

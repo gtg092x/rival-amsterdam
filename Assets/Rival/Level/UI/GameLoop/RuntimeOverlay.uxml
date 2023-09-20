@@ -6,8 +6,11 @@
     <ui:VisualElement name="EffectsContainer" class="modal" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: center; justify-content: flex-end;">
         <ui:VisualElement name="Effects" style="background-color: rgba(0, 0, 0, 0); background-image: url(&apos;project://database/Assets/Rival/Level/Renders/Effects.renderTexture?fileID=8400000&amp;guid=0dba9d41c5e37ff4486b98428ba7f481&amp;type=2#Effects&apos;); flex-shrink: 0; width: 256px; height: 256px; align-items: center; bottom: 128px;" />
     </ui:VisualElement>
-    <ui:VisualElement name="PoseGate" class="modal" style="flex-grow: 0; justify-content: flex-start; align-items: stretch; background-color: rgba(0, 0, 0, 0); display: flex;">
-        <ui:VisualElement class="modal-content" style="background-color: rgba(173, 173, 173, 0); padding-top: 16px; padding-bottom: 16px; justify-content: center; align-items: center; top: 32px; margin-left: 8px; margin-right: 8px; padding-right: 16px; padding-left: 16px; background-image: url(&apos;project://database/Assets/Rival/Art/Vectors/silhouette.svg?fileID=7388822144124034973&amp;guid=6f06ff629e84c47dd99dcefa0b39e057&amp;type=3#silhouette&apos;); -unity-background-scale-mode: scale-to-fit; flex-grow: 1; margin-bottom: 200px; display: none;" />
+    <ui:VisualElement name="PoseGate" class="modal" style="justify-content: flex-start; align-items: stretch; background-color: rgba(0, 0, 0, 0); display: flex; padding-left: 0; padding-right: 0;">
+        <ui:VisualElement class="top-bar" style="background-color: rgba(0, 0, 0, 0);" />
+        <ui:VisualElement name="VisualElement">
+            <ui:Label tabindex="-1" text="Do a power pose!" display-tooltip-when-elided="true" name="PowerPoseMessage" class="overlay-bg" style="align-items: center; font-size: 24px; -unity-text-align: middle-center; margin-top: 0; -unity-font-style: bold; margin-left: 0; margin-right: 0; margin-bottom: 0; padding-top: 8px; padding-left: 8px; padding-right: 8px; padding-bottom: 8px;" />
+        </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-height: 100%; max-height: 100%;">
         <ui:VisualElement name="TopBar" style="flex-grow: 0; padding-left: 16px; padding-right: 16px; padding-top: 16px; padding-bottom: 16px; flex-direction: row; justify-content: center;">
@@ -43,9 +46,12 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="Gameplay" class="modal" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: flex; align-items: center; justify-content: center;">
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
         <BossHealthElement bossHealth="0" style="justify-content: center; align-items: center;" />
         <ui:Button text="Debug Miss" display-tooltip-when-elided="true" name="DebugMiss" class="rival-runtime-button" style="background-image: url(&apos;project://database/Assets/Rival/Art/Vectors/RivalButtonGameplay.svg?fileID=7388822144124034973&amp;guid=afb37a9643d424afca372e34fdce84a4&amp;type=3#RivalButtonGameplay&apos;); width: 163px; -unity-font-definition: url(&apos;project://database/Assets/Rival/Art/Fonts/Poppint%20Font/Poppins-Regular%20SDF.asset?fileID=11400000&amp;guid=8d9ce36a9955349a28e6c2c278be403e&amp;type=2#Poppins-Regular SDF&apos;); -unity-font-style: bold; display: none; transition-property: all, opacity; transition-duration: 0s, 1s; transition-timing-function: ease, ease; transition-delay: 0s, 0s;" />
         <ui:Button text="Debug Hit" display-tooltip-when-elided="true" name="DebugHit" class="rival-runtime-button" style="background-image: url(&apos;project://database/Assets/Rival/Art/Vectors/RivalButtonGameplay.svg?fileID=7388822144124034973&amp;guid=afb37a9643d424afca372e34fdce84a4&amp;type=3#RivalButtonGameplay&apos;); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); background-color: rgba(188, 188, 188, 0); width: 163px; height: 46px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-font-definition: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=73c91d2e2428d420d9f8ad99feeeef90&amp;type=3#NotInter-Regular&apos;); display: none;" />
+        <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+        <ui:Label tabindex="-1" text="Hits Left: 2" display-tooltip-when-elided="true" name="MovesRemaining" style="align-self: stretch; -unity-text-align: upper-center; -unity-font-definition: url(&apos;project://database/Assets/Rival/Art/Fonts/Tempo%20SDF.asset?fileID=11400000&amp;guid=ce847bef19f83452b88b8b35aed5c022&amp;type=2#Tempo SDF&apos;); font-size: 32px; margin-bottom: 32px;" />
     </ui:VisualElement>
     <ui:VisualElement name="GameOver" class="modal" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: flex; align-items: center; justify-content: center;">
         <ui:VisualElement name="BossGameOver" style="background-color: rgba(0, 0, 0, 0); width: 164px; height: 164px; flex-shrink: 0; -unity-background-scale-mode: scale-to-fit;" />

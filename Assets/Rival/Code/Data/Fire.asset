@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44d9283ab26d48f0baacbc024c93103, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 2584368621543739529, guid: 8a0d7309dd0856d4daa3742a1b89b843, type: 3}
+  Prefab: {fileID: 1380525408382130797, guid: bc9fa8d705a3e41d1895538efa9ae668, type: 3}
   AvatarName: Pyro the Maniac
   BoneFocus: RigHead
   Taunts:
