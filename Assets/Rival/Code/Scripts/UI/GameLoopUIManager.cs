@@ -27,7 +27,7 @@ public class GameLoopUIManager : MonoBehaviour
     
     private TextElement PoseMessage => rootElement.Q<TextElement>("PowerPoseMessage");
     
-    private TextElement HitsLeft => rootElement.Q<TextElement>("HitsLeft");
+    private TextElement HitsLeft => rootElement.Q<TextElement>("MovesRemaining");
     private VisualElement GameplayOverlay => rootElement.Q<VisualElement>("Gameplay");
     private VisualElement BossGameOver => rootElement.Q<VisualElement>("BossGameOver");
     
@@ -59,7 +59,6 @@ public class GameLoopUIManager : MonoBehaviour
         _gameManager.OnGameStateExit.AddListener(HandleStateExit);
         _gameManager.OnGameStateEnter.AddListener(HandleStateEnter);
         _gameManager.OnGameStateChange.AddListener(HandleGameStateChange);
-        _gameManager.GetSessionManager().GameModel.OnHitUpdate += GameModelOnOnHitUpdate;
     }
 
     private void GameModelOnOnHitUpdate(int player, int hitsRemaining)
@@ -297,7 +296,6 @@ public class GameLoopUIManager : MonoBehaviour
         session.OnPlayerFocus.RemoveListener(HandlePlayerFocus);
         session.OnBossHealthUpdate.RemoveListener(GameModelOnOnBossHealthUpdate);
         session.OnHealthUpdate.RemoveListener(GameModelOnOnHealthUpdate);
-        _gameManager.GetSessionManager().GameModel.OnHitUpdate -= GameModelOnOnHitUpdate;
     }
 
     private void GameModelOnOnHealthUpdate(PlayerSessionModel.PlayerEntry playerIndex, float health)
@@ -308,7 +306,11 @@ public class GameLoopUIManager : MonoBehaviour
     private void GameModelOnOnBossHealthUpdate(float health)
     {
         BossHealth.BossBarProgress = health;
-        // TODO animate boss
+        var playerIndex = _gameManager.GetSessionManager().GameModel.GetCurrentPlayer().Index;
+        GameModelOnOnHitUpdate(
+            playerIndex,
+            _gameManager.GetSessionManager().GameModel.GetPlayerHits(playerIndex) - 1
+            );
     }
 
     private void BindGameplayEvents()

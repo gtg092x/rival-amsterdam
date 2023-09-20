@@ -37,7 +37,7 @@ public class SpatialUIMarkers : MonoBehaviour
     public Vector2 Scale = Vector2.one;
 
     public (int, int)[] Joints;
-    
+    const float LOW_CONFIDENCE_ALPHA = 0.2f;
     public RawImage Source;
     void Draw()
     {
@@ -79,9 +79,9 @@ public class SpatialUIMarkers : MonoBehaviour
             {
                 var mat  = rend.material;
                 var color = marker.Color;
-                if (!marker.isVis)
+                if (isVis(marker, Markers))
                 {
-                    color.a = 0.2f;
+                    color.a = LOW_CONFIDENCE_ALPHA;
                 }
                 mat.color = color;
                 
@@ -100,7 +100,7 @@ public class SpatialUIMarkers : MonoBehaviour
                 _newPositions[marker.Name] = new Vector3(x, y, z);    
             }
         }
-        
+        if (Joints != null)
         for (int i = 0; i < Joints.Length; i++)
         {
             var joint = Joints[i];
@@ -125,12 +125,12 @@ public class SpatialUIMarkers : MonoBehaviour
                 var startLabel = Markers[joint.Item1].Name;
                 var endLabel = Markers[joint.Item2].Name;
 
-                if (!Markers[joint.Item1].isVis || !Markers[joint.Item2].isVis)
+                if (!isVis(Markers[joint.Item1], Markers) || !isVis(Markers[joint.Item2], Markers))
                 {
-                    //var mat  = lineRenderer.material;
-                    //var color = mat.color;
-                    //color.a = 0.2f;
-                    //mat.color = color;
+                    var mat  = lineRenderer.material;
+                    var color = mat.color;
+                    color.a = LOW_CONFIDENCE_ALPHA;
+                    mat.color = color;
                 }
                 lineRenderer.SetPosition(0, _markers[startLabel].transform.position);
                 lineRenderer.SetPosition(1, _markers[endLabel].transform.position);
@@ -147,6 +147,11 @@ public class SpatialUIMarkers : MonoBehaviour
             _lerp = StartCoroutine(LerpLocations(_markers, _newPositions));    
         }
         
+    }
+
+    private bool isVis(MarkerData marker, MarkerData[] all)
+    {
+        return marker.isVis;
     }
 
     public Material LineMaterial;
