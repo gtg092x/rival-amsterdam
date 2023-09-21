@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RivalPlayerChick
+  m_Controller: {fileID: 9100000, guid: 088097a35e5b946f88a27224709fe2fa, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: 5f7fd1313f1641842b9ec81285ce01eb,
+      type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 435063252014d9241b4c9200e122303e, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 745373822cfc1884bb4e33e41735f6be, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 435063252014d9241b4c9200e122303e, type: 3}
+  - m_OriginalClip: {fileID: 1827226128182048838, guid: 180094b187372fe4c87dbdd264bf0b2d,
+      type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 435063252014d9241b4c9200e122303e, type: 3}

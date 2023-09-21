@@ -37,7 +37,7 @@ public class SpatialUIMarkers : MonoBehaviour
     public Vector2 Scale = Vector2.one;
 
     public (int, int)[] Joints;
-    const float LOW_CONFIDENCE_ALPHA = 0.2f;
+    public float LOW_CONFIDENCE_ALPHA = 0f;
     public RawImage Source;
     void Draw()
     {
@@ -56,7 +56,7 @@ public class SpatialUIMarkers : MonoBehaviour
             _newPositions = new Dictionary<string, Vector3>();
         }
 
-        
+        var visRate = (float)Markers.Where(x => x.isVis).Count() / (float)Markers.Length;
         
         for (int i = 0; i < Markers.Length; i++)
         {
@@ -79,9 +79,13 @@ public class SpatialUIMarkers : MonoBehaviour
             {
                 var mat  = rend.material;
                 var color = marker.Color;
-                if (isVis(marker, Markers))
+                if (!isVis(marker, visRate))
                 {
                     color.a = LOW_CONFIDENCE_ALPHA;
+                }
+                else
+                {
+                    color.a = 1f;
                 }
                 mat.color = color;
                 
@@ -104,6 +108,7 @@ public class SpatialUIMarkers : MonoBehaviour
         for (int i = 0; i < Joints.Length; i++)
         {
             var joint = Joints[i];
+            
             if (_lines != null && !_lines.ContainsKey(joint))
             {
                 _lines[joint] = new GameObject("Line");
@@ -125,11 +130,18 @@ public class SpatialUIMarkers : MonoBehaviour
                 var startLabel = Markers[joint.Item1].Name;
                 var endLabel = Markers[joint.Item2].Name;
 
-                if (!isVis(Markers[joint.Item1], Markers) || !isVis(Markers[joint.Item2], Markers))
+                if (!isVis(Markers[joint.Item1], visRate) || !isVis(Markers[joint.Item2], visRate))
                 {
                     var mat  = lineRenderer.material;
                     var color = mat.color;
                     color.a = LOW_CONFIDENCE_ALPHA;
+                    mat.color = color;
+                }
+                else
+                {
+                    var mat  = lineRenderer.material;
+                    var color = mat.color;
+                    color.a = 1f;
                     mat.color = color;
                 }
                 lineRenderer.SetPosition(0, _markers[startLabel].transform.position);
@@ -149,10 +161,12 @@ public class SpatialUIMarkers : MonoBehaviour
         
     }
 
-    private bool isVis(MarkerData marker, MarkerData[] all)
+    private bool isVis(MarkerData marker, float rate)
     {
-        return marker.isVis;
+        return rate > VisRateRequired;
     }
+
+    public float VisRateRequired = 0.75f;
 
     public Material LineMaterial;
 

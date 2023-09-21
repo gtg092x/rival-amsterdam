@@ -1,5 +1,5 @@
 :root {
-    --loop-overlay-color: rgba(0, 0, 0, 0.4);
+    --loop-overlay-color: rgba(0, 0, 0, 0.8);
     --overlay-top-height: 150px;
     --overlay-bottom-height: 200px;
     --overlay-side-width: 50px;
