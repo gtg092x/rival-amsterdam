@@ -163,10 +163,11 @@ public class SpatialUIMarkers : MonoBehaviour
 
     private bool isVis(MarkerData marker, float rate)
     {
-        return rate > VisRateRequired;
+        return rate > SkeletonVisThreshold;
     }
 
-    public float VisRateRequired = 0.75f;
+    [Range(0f, 1f)]
+    public float SkeletonVisThreshold = 0.75f;
 
     public Material LineMaterial;
 
