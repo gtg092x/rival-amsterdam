@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chick
   m_EditorClassIdentifier: 
   Prefab: {fileID: 795996128864882907, guid: 03760b883ed9d4382afca85a11c8f867, type: 3}
-  AvatarName: Chick
+  AvatarName: Chicken
   BoneFocus: RigPelvis
   Taunts: []
   Ouches: []
